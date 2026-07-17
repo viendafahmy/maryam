@@ -3,37 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#1C1917">
+<meta name="theme-color" content="#2B3624">
 <title>Quranic Root Explorer — Surah Maryam</title>
 <link rel="manifest" href="#" />
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+
   /* ── TOKENS ── */
   :root {
-    --ink:        #1C1917;
-    --parchment:  #FAF7F2;
-    --parchment2: #F0EBE3;
-    --parchment3: #E4DCCE;
-    --gold:       #B8963E;
-    --gold-light: #F5E9C8;
-    --sage:       #4A7C59;
-    --sage-light: #D6EAD9;
-    --rust:       #C4785A;
-    --rust-light: #FAE4D8;
-    --blue:       #3A6B9E;
-    --blue-light: #D6E8F5;
-    --violet:     #6B5B9E;
-    --violet-light:#E8E3F8;
-    --muted:      #6B6259;
-    --border:     #D4C9B8;
+    /* Retinted to match index.html's elegant green-beige palette.
+       Variable NAMES are unchanged on purpose — every rule below already
+       references --ink, --gold, --sage, etc., so only the values need to move. */
+    --ink:        #2B3624;   /* was near-black, now deep forest green (index: --text-primary) */
+    --parchment:  #F4EFE3;   /* was warm white, now warm beige (index: --bg-page-1) */
+    --parchment2: #E7E4D3;   /* was light tan, now soft sage-beige (index: --bg-page-2) */
+    --parchment3: #DCD5BE;   /* was deeper tan, now deeper sage-beige (hover/active states) */
+    --gold:       #4C6B3E;   /* was gold, now sage green accent (index: --text-accent) */
+    --gold-light: #E4EAD9;   /* light sage tint for divine/accent backgrounds */
+    --sage:       #3E5C31;   /* verb/success green (index: --text-success) */
+    --sage-light: #DCE7D3;   /* light green tint (index: --bg-success, opaque) */
+    --rust:       #8A4530;   /* participle/danger terracotta (index: --text-danger) */
+    --rust-light: #F0DED5;   /* light terracotta tint (index: --bg-danger, opaque) */
+    --blue:       #2F5C51;   /* noun accent — muted teal instead of blue, stays in the earthy family */
+    --blue-light: #DAE6E2;   /* light teal tint */
+    --violet:     #8C6A26;   /* maṣdar accent — warm ochre instead of violet, stays earthy */
+    --violet-light:#EFE6CF;  /* light ochre tint */
+    --muted:      #8B9280;   /* index: --text-muted */
+    --border:     #D6CDB5;   /* warm beige border, same family as parchment */
     --radius:     6px;
-    --shadow:     0 1px 4px rgba(28,25,23,0.10);
+    --shadow:     0 1px 4px rgba(43,54,36,0.10);
+
+    /* Sans-serif stack, matching index.html. Arabic text below still uses Amiri —
+       that's a script choice, not a "serif vs sans" choice, so it's untouched. */
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: 'Georgia', 'Times New Roman', serif;
+    font-family: var(--font-sans);
     background: var(--parchment);
     color: var(--ink);
     min-height: 100vh;
@@ -68,7 +77,7 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--gold);
-    font-family: 'Georgia', serif;
+    font-family: var(--font-sans);
   }
 
   .header-title .ar {
@@ -744,6 +753,25 @@
 
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; }
+  }
+
+  /* ── ARABIC TYPEFACE ──
+     All Arabic-bearing elements, consolidated in one rule so it's
+     obvious at a glance which script gets which font. Matches the
+     Amiri treatment used in index.html — a script choice, independent
+     of the serif→sans-serif change above (which only affects Latin text). */
+  .header-title .ar,
+  .root-nav-arabic,
+  .root-arabic-large,
+  .root-letters-separated,
+  .form-arabic,
+  .form-detail-arabic,
+  .conj-arabic,
+  .derived-arabic,
+  .occurrence-arabic,
+  .home-quran-line,
+  .home-card-arabic {
+    font-family: 'Amiri', serif;
   }
 </style>
 </head>
