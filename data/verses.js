@@ -1,0 +1,222 @@
+// Surah Maryam — verse-by-verse grammar data.
+// Add new verses here by copying an existing block (e.g. `16: { ... }`).
+// This file is loaded via <script src="data/verses.js"></script> before app.js runs.
+
+const verses = {
+  1: {
+    arabic: 'كهيعص',
+    transliteration: 'Kāf Hā Yāʾ ʿAyn Ṣād',
+    translation: 'Disconnected letters (al-ḥurūf al-muqaṭṭaʿah)',
+    tags: ['structure'],
+    tagLabels: ['Unique opening'],
+    summary: 'The Mysterious Letters — al-Ḥurūf al-Muqaṭṭaʿah',
+    analysis: [
+      { word: 'كهيعص', detail: 'Five disconnected letters: Kāf, Hā, Yāʾ, ʿAyn, Ṣād. These are among 29 surahs that open with such letters (known as fawātiḥ al-suwar). No grammatical function is assigned — they operate outside the morphological system entirely. Their meaning is known only to Allah, according to the dominant scholarly position (Suyūṭī, al-Itqān). Phonetically, they showcase the phonetic range of Arabic: from velar (ك), to laryngeal (ع), to emphatic (ص). They serve as an acoustic summons — calling the listener to attention before the content begins.' }
+    ],
+    highlight: 'These letters are not parsed grammatically. They are the Quran\'s most direct challenge to human linguistic expectation — meaning that exceeds grammar.'
+  },
+  2: {
+    arabic: 'ذِكْرُ رَحْمَتِ رَبِّكَ عَبْدَهُ زَكَرِيَّا',
+    transliteration: 'dhikru raḥmati rabbika ʿabdahu zakariyyā',
+    translation: 'A mention of the mercy of your Lord to His servant Zakariyyā',
+    tags: ['noun', 'structure'],
+    tagLabels: ['Iḍāfah chain', 'Maṣdar as subject'],
+    summary: 'Iḍāfah cascade — the surah\'s opening nominal sentence',
+    analysis: [
+      { word: 'ذِكْرُ', detail: 'Maṣdar (verbal noun) of Form I verb ذَكَرَ (dhakara — to mention/remember). Root: ذ-ك-ر. Case: marfūʿ (nominative) — this is the mubtadaʾ (subject) of a nominal sentence (jumla ismiyyah). The predicate (khabar) is understood: "This is a mention of..." The maṣdar as the opening word of a surah is a Quranic structural device — it frames everything that follows as an instance of this act of mentioning.' },
+      { word: 'رَحْمَتِ', detail: 'Noun from root ر-ح-م (raḥima — to show mercy). Pattern: faʿla → raḥma. Case: majrūr (genitive) — muḍāf ilayhi (second term of iḍāfah) following ذِكْرُ. The tāʾ marbūṭah (ة) becomes a regular tāʾ in pronunciation when the word is in iḍāfah and followed by another word: raḥmati rabbika.' },
+      { word: 'رَبِّكَ', detail: 'Noun رَبّ (Lord) from root ر-ب-ب, with second-person singular masculine possessive suffix كَ. Case: majrūr — second muḍāf ilayhi, attached to رَحْمَتِ. This creates a three-term iḍāfah chain: ذِكْرُ ← رَحْمَتِ ← رَبِّكَ (mention of the-mercy of your-Lord). The address is to the Prophet (ﷺ) — "your Lord."' },
+      { word: 'عَبْدَهُ', detail: 'Noun عَبْد (servant) from root ع-ب-د, with third-person singular masculine pronoun هُ as possessive suffix. Case: manṣūb (accusative) — this is the mafʿūl bihi (direct object), but the verb is implicit: "[showing mercy to / bestowing upon] His servant." The accusative here operates in a detached (munqaṭiʿ) construction, linking back to the maṣdar رَحْمَةَ.' },
+      { word: 'زَكَرِيَّا', detail: 'A proper noun — name of the prophet Zachariah. It is a non-Arabic (aʿjamī) name and therefore diptote (mamṉūʿ min al-ṣarf): it does not take tanwīn (nunation) and has only two case vowels (ḍamma for nominative/genitive, fatḥa for accusative). Here it functions as badal (appositive) to عَبْدَهُ — identifying which servant is meant.' }
+    ],
+    highlight: 'A three-term iḍāfah chain (ذِكْرُ رَحْمَتِ رَبِّكَ) opens the surah — one of the most elegant uses of the construct state in the Quran.'
+  },
+  3: {
+    arabic: 'إِذْ نَادَىٰ رَبَّهُ نِدَاءً خَفِيًّا',
+    transliteration: 'idh nādā rabbahu nidāʾan khafiyyan',
+    translation: 'When he called to his Lord a private call',
+    tags: ['verb', 'noun', 'structure'],
+    tagLabels: ['Temporal clause', 'Mafʿūl muṭlaq', 'Rhyme -iyyā'],
+    summary: 'The temporal clause and the cognate accusative',
+    analysis: [
+      { word: 'إِذْ', detail: 'Temporal particle: "when." It introduces a ẓarf al-zamān (adverb of time) clause and requires the following verb to be in the past tense (māḍī). إِذْ links back to verse 2 — "a mention of His mercy to His servant Zakariyyā... when he called." The whole of vv. 3–15 is syntactically inside this إِذْ clause.' },
+      { word: 'نَادَىٰ', detail: 'Verb from root ن-د-و/ي (nādā — to call). Form III verb (fāʿala pattern): the Form III adds a meaning of direction or intensity — calling *toward* someone, as opposed to merely making noise. Past tense, third-person singular masculine. The alif maqṣūra (ى) at the end is the regular spelling for final long ā in a verb ending. Subject: Zakariyyā (implied from context).' },
+      { word: 'رَبَّهُ', detail: 'Direct object (mafʿūl bihi): رَبّ + pronoun suffix هُ (his). Case: manṣūb (accusative, fatḥa). He called *his Lord* — the possessive suffix identifies the intimate, personal relationship between Zakariyyā and Allah that defines this du\'āʾ.' },
+      { word: 'نِدَاءً', detail: 'Maṣdar (verbal noun) of نَادَىٰ, from root ن-د-و. Case: manṣūb — this is a mafʿūl muṭlaq (cognate/absolute object), a grammatical structure unique to Arabic in which a verbal noun from the *same root* as the preceding verb is placed in the accusative to intensify or qualify the action. "He called... a calling." This construction appears repeatedly in the Quran for emphasis.' },
+      { word: 'خَفِيًّا', detail: 'Adjective from root خ-ف-ي (khafiya — to be hidden). Pattern: faʿīl → khafiyy. Case: manṣūb — it is naʿt (adjective) agreeing with نِدَاءً in case, number, and gender. The double yāʾ (يّ) produces the "-iyyā" rhyme. Meaning: hidden, secret, whispered. This is the first of the famous "-iyyā" rhyme-words. Theologically: Zakariyyā prays quietly, privately — a model of sincere, unostentatious supplication.' }
+    ],
+    highlight: 'نِدَاءً خَفِيًّا is a mafʿūl muṭlaq (cognate accusative) + naʿt — "a calling, a hidden one." This double construction intensifies and qualifies simultaneously. The first "-iyyā" rhyme word.'
+  },
+  4: {
+    arabic: 'قَالَ رَبِّ إِنِّي وَهَنَ الْعَظْمُ مِنِّي وَاشْتَعَلَ الرَّأْسُ شَيْبًا وَلَمْ أَكُن بِدُعَائِكَ رَبِّ شَقِيًّا',
+    transliteration: 'qāla rabbi innī wahana l-ʿaẓmu minnī washtaʿala r-raʾsu shayban wa-lam akun bi-duʿāʾika rabbi shaqiyyan',
+    translation: 'He said: My Lord, my bones have weakened and my head has blazed with white hair, and I have never been unhappy in prayer to You, my Lord',
+    tags: ['verb', 'structure', 'rhyme'],
+    tagLabels: ['Form VIII', 'Jussive لَمْ', 'ḥāl accusative', 'Rhyme -iyyā'],
+    summary: 'The supplication — Zakariyyā\'s du\'āʾ, the grammatical masterpiece of this passage',
+    analysis: [
+      { word: 'قَالَ', detail: 'Verb: qāla (he said). Root: ق-و-ل. Form I hollow verb (the middle radical is wāw, which contracts). Past tense, 3rd person singular masculine. This verb introduces direct speech — everything from رَبِّ onward is Zakariyyā\'s exact words.' },
+      { word: 'رَبِّ', detail: 'Vocative: yā rabbi → contracted to rabbi in Quranic speech. The yāʾ al-mutakallim (first-person possessive suffix, "my") is elided for stylistic economy — رَبِّ = "my Lord." Case of رَبّ is technically manṣūb (munādā/vocative), though the suffix makes the case ending invisible. This intimate address recurs throughout vv. 4–6.' },
+      { word: 'إِنِّي', detail: 'إِنَّ (emphatic particle asserting truth) + yāʾ al-mutakallim (first-person suffix "me/I"). إِنَّ takes the following noun in accusative (manṣūb). Here the accusative is implicit in the suffix —ي. What follows إِنِّي is Zakariyyā\'s deeply personal testimony. The إِنَّ marks this as a sincere, emphatic affirmation — not neutral description.' },
+      { word: 'وَهَنَ الْعَظْمُ مِنِّي', detail: 'وَهَنَ: Form I verb (wahana — to weaken, to become frail). Root: و-ه-ن. Past tense, 3rd person singular masculine. الْعَظْمُ: subject (fāʿil), marfūʿ (ḍamma). Meaning: "the bone." مِنِّي: preposition مِنْ + pronoun suffix ني (from me). The phrase is literally "the bone has weakened from me" — a partition construction: the weakness proceeds *from within* him, not as an external state. The singular الْعَظْم (bone, in the collective singular) refers to bones as a whole — the entire skeletal structure weakening.' },
+      { word: 'وَاشْتَعَلَ الرَّأْسُ شَيْبًا', detail: 'اشْتَعَلَ: Form VIII verb (iftaʿala) from root ش-ع-ل (to blaze, to kindle fire). Form VIII adds a reflexive or intensive quality — the blazing happens *to* and *within* the subject. الرَّأْسُ: subject, marfūʿ ("the head"). شَيْبًا: manṣūb — this is a ḥāl (circumstantial accusative/complement of manner) or tamyīz (accusative of specification): "the head blazed with/in respect of white hair." The metaphor is extraordinary: white hair as fire consuming the head. This is considered one of the most vivid metaphors in the entire Quran.' },
+      { word: 'وَلَمْ أَكُن بِدُعَائِكَ رَبِّ شَقِيًّا', detail: 'لَمْ: negation particle that pulls the following verb into the jussive (majzūm) mood. أَكُن: Form I imperfect of كَانَ (to be), jussive form — the final nūn is dropped (أَكُونُ → أَكُن). بِدُعَائِكَ: preposition بِـ + maṣdar دُعَاء (prayer, supplication, from root د-ع-و) + possessive suffix كَ (your). شَقِيًّا: predicate of كَانَ, manṣūb — adjective from root ش-ق-ي (to be wretched/unhappy). "-iyyā" rhyme word. The full construction: "never have I been, in prayer to You, wretched." Zakariyyā reminds Allah that his prayers have always been answered — not as presumption, but as trusting expectation.' }
+    ],
+    highlight: 'اشْتَعَلَ الرَّأْسُ شَيْبًا — Form VIII verb + subject + tamyīz accusative: the most celebrated metaphor in this surah. White hair as fire blazing through the head.'
+  },
+  5: {
+    arabic: 'وَإِنِّي خِفْتُ الْمَوَالِيَ مِن وَرَائِي وَكَانَتِ امْرَأَتِي عَاقِرًا فَهَبْ لِي مِن لَّدُنكَ وَلِيًّا',
+    transliteration: 'wa-innī khiftu l-mawāliya min warāʾī wa-kānat imraʾatī ʿāqiran fa-hab lī min ladunka waliyyan',
+    translation: 'And I fear the successors after me, and my wife is barren, so grant me from Yourself an heir',
+    tags: ['verb', 'structure'],
+    tagLabels: ['Perfect tense with present meaning', 'كَانَ + predicate', 'Imperative هَبْ', 'Rhyme -iyyā'],
+    summary: 'Fear, explanation, and petition — the structure of a complete supplication',
+    analysis: [
+      { word: 'خِفْتُ', detail: 'Verb from root خ-و-ف (khāfa — to fear). Form I hollow verb (middle radical wāw). Past tense, first-person singular: "I feared / I fear." In Arabic, the perfect tense can express a completed state that continues into the present — Zakariyyā\'s fear about successors is not a past event but an ongoing concern he is now articulating.' },
+      { word: 'الْمَوَالِيَ', detail: 'Plural noun from root و-ل-ي (waliya — to be close to, to succeed). Pattern: مَوَالٍ (mawālin) — a broken plural with the pattern mafāʿil. Case: manṣūb (direct object of خِفْتُ), and the final yāʾ instead of tanwīn kasra indicates the manqūṣ (defective noun) in the definite accusative. Meaning: heirs, successors, those who come after.' },
+      { word: 'وَكَانَتِ امْرَأَتِي عَاقِرًا', detail: 'كَانَتِ: Form I past tense of كَانَ (to be), feminine (for امرأة). كَانَ is a nāqiṣah verb (incomplete/defective verb): it takes a subject in nominative and a predicate (khabar) in accusative. امْرَأَتِي: subject of كَانَتِ, marfūʿ (ḍamma hidden under kasra due to iḍāfah with yāʾ) — "my wife." عَاقِرًا: predicate (khabar kāna), manṣūb — active participle from root ع-ق-ر meaning barren, unable to bear children. Notice عَاقِرًا is masculine in form despite referring to a woman — this is a ṣifah mushabbaha (assimilated adjective) that does not change for gender.' },
+      { word: 'فَهَبْ لِي مِن لَّدُنكَ', detail: 'فَـ: consequential/then particle (fāʾ al-natīja) — connecting the situation described (aging, barren wife) to the petition. هَبْ: Form I imperative from root و-ه-ب (wahaba — to give as a gift). Hollow verb imperative: يَهَبُ → هَبْ. لِي: preposition لِـ + first-person pronoun (to me). مِن لَّدُنكَ: lam + ladun + suffix — "from with You, from Your presence." لَدُن is a frozen particle of place meaning "from directly with/from the immediate presence of." It appears rarely in the Quran and always carries weight: this is no ordinary gift, but one that must come directly from the divine presence.' },
+      { word: 'وَلِيًّا', detail: 'Noun from root و-ل-ي. Pattern: faʿīl → waliyy. Direct object of هَبْ, case: manṣūb. Meaning: heir, guardian, friend, protector, ally. In this context specifically an heir and successor who will carry forward his legacy and his faith. "-iyyā" rhyme word.' }
+    ],
+    highlight: 'فَهَبْ لِي مِن لَّدُنكَ: the imperative هَبْ (grant!) addressed to Allah is not disrespectful — in Arabic duʿāʾ grammar, the imperative addressed to God expresses complete dependence and urgent need.'
+  },
+  6: {
+    arabic: 'يَرِثُنِي وَيَرِثُ مِنْ آلِ يَعْقُوبَ وَاجْعَلْهُ رَبِّ رَضِيًّا',
+    transliteration: 'yarithunī wa-yarithu min āli yaʿqūba wa-jʿalhu rabbi raḍiyyan',
+    translation: 'Who will inherit from me and inherit from the family of Yaʿqūb — and make him, my Lord, pleasing',
+    tags: ['verb', 'structure'],
+    tagLabels: ['Relative clause (ṣila)', 'Imperative اجْعَلْ', 'Rhyme -iyyā'],
+    summary: 'Specification of the heir, and a second petition',
+    analysis: [
+      { word: 'يَرِثُنِي وَيَرِثُ', detail: 'Both are Form I imperfect verbs from root و-ر-ث (waritha — to inherit). First person object suffix: نِي (me). Second verb: "and inherit from the family of Yaʿqūb." These two verbs form a ṣilat al-mawṣūl — the relative clause defining وَلِيًّا from v. 5. The implied relative pronoun is الَّذِي: "an heir [who] will inherit from me and [who] will inherit from the family of Yaʿqūb." In Arabic, when the antecedent is indefinite (وَلِيًّا), the relative clause follows without an explicit relative pronoun.' },
+      { word: 'مِنْ آلِ يَعْقُوبَ', detail: 'مِنْ: preposition. آل: "family, people, followers" — a noun often used for prophetic lineages (آل إبراهيم, آل محمد). يَعْقُوبَ: Jacob. Non-Arabic proper noun, diptote (mamṉūʿ min al-ṣarf): no tanwīn, always fatḥa in genitive/accusative. Zakariyyā asks for an heir who will inherit both his personal prophetic legacy and the larger legacy of the house of the Prophet Yaʿqūb.' },
+      { word: 'وَاجْعَلْهُ رَبِّ رَضِيًّا', detail: 'اجْعَلْ: Form I imperative from root ج-ع-ل (jaʿala — to make, to render). Here jaʿala acts as a verb of transformation: "make him [into a state of]." It takes two objects: the first is هُ (him, the heir), and the second is the predicate رَضِيًّا. رَضِيًّا: adjective from root ر-ض-ي (to be pleased, to be pleasing). Pattern faʿīl → raḍiyy. Manṣūb as second mafʿūl. "-iyyā" rhyme word. Meaning: one who is pleasing to Allah, content, approved.' }
+    ],
+    highlight: 'The verb يَرِثُنِي without a preceding relative pronoun is a ṣila ḥadhfiyyah (relative clause with deleted connector) — standard when the antecedent (وَلِيًّا) is indefinite.'
+  },
+  7: {
+    arabic: 'يَا زَكَرِيَّا إِنَّا نُبَشِّرُكَ بِغُلَامٍ اسْمُهُ يَحْيَىٰ لَمْ نَجْعَل لَّهُ مِن قَبْلُ سَمِيًّا',
+    transliteration: 'yā zakariyyā innā nubashshiruka bi-ghulāmin ismuhu yaḥyā lam najʿal lahu min qablu samiyyan',
+    translation: 'O Zakariyyā, indeed We give you glad tidings of a boy whose name is Yaḥyā — We have never made for him before any namesake',
+    tags: ['verb', 'structure'],
+    tagLabels: ['Form II verb نُبَشِّر', 'Nominal relative clause', 'Jussive لَمْ', 'Rhyme -iyyā'],
+    summary: 'The divine response — glad tidings, the name Yaḥyā, and the unprecedented declaration',
+    analysis: [
+      { word: 'يَا زَكَرِيَّا', detail: 'يَا: the vocative particle (ḥarf al-nidāʾ). زَكَرِيَّا: diptote proper noun in the vocative, manṣūb. The vocative is always manṣūb in Arabic for defined nouns. Here Allah or the angel addresses Zakariyyā by name directly — a mark of divine intimacy.' },
+      { word: 'إِنَّا نُبَشِّرُكَ', detail: 'إِنَّا: إِنَّ + first-person plural pronoun نَا (We). The royal/majestic plural (naḥnu al-taʿẓīm) is used throughout the Quran for divine speech. نُبَشِّرُكَ: Form II imperfect verb from root ب-ش-ر (to give good news). Form II (faʿʿala) intensifies — "We are giving you glad tidings." First-person plural present. Object suffix: كَ (you, Zakariyyā). Form II of this root in all its derivations (بِشَارَة, مُبَشِّر, بُشْرَى) refers specifically to good news.' },
+      { word: 'بِغُلَامٍ اسْمُهُ يَحْيَىٰ', detail: 'بِغُلَامٍ: preposition بِـ + indefinite noun غُلَام (boy, youth), majrūr (genitive after bāʾ), with tanwīn kasra. اسْمُهُ يَحْيَى: nominal sentence functioning as ṣifa (adjective clause) to غُلَام — "a boy whose name is Yaḥyā." اسْمُهُ is the mubtadaʾ (subject), يَحْيَى is the khabar (predicate). يَحْيَى is itself a Form I imperfect verb (from root ح-ي-ي, to live) used as a name: "he will live." This is one of the most linguistically dense names in the Quran — a living verb as a proper noun.' },
+      { word: 'لَمْ نَجْعَل لَّهُ مِن قَبْلُ سَمِيًّا', detail: 'لَمْ: negation pulling the verb into jussive (majzūm). نَجْعَل: Form I imperfect jussive of ج-ع-ل (to make/render). لَّهُ: preposition لِـ + pronoun. مِن قَبْلُ: "before" — قَبْلُ here is a frozen adverb (maqṭūʿ ʿan al-iḍāfah), so it takes a fixed ḍamma rather than a case vowel. سَمِيًّا: object (mafʿūl bihi), manṣūb — from root س-م-و/ي (to be lofty, to name). Adjective meaning "namesake, one bearing the same name." "-iyyā" rhyme word. The statement: no one before Yaḥyā was given this name.' }
+    ],
+    highlight: 'يَحْيَى (Yaḥyā) is grammatically a Form I imperfect verb (yaḥyā — he will live) used as a proper noun. The child\'s very name is a conjugated verb — a grammatical and theological marvel.'
+  },
+  8: {
+    arabic: 'قَالَ رَبِّ أَنَّىٰ يَكُونُ لِي غُلَامٌ وَكَانَتِ امْرَأَتِي عَاقِرًا وَقَدْ بَلَغْتُ مِنَ الْكِبَرِ عِتِيًّا',
+    transliteration: 'qāla rabbi annā yakūnu lī ghulāmun wa-kānat imraʾatī ʿāqiran wa-qad balaghtu mina l-kibari ʿitiyyan',
+    translation: 'He said: My Lord, how will there be for me a boy when my wife is barren and I have reached extreme old age?',
+    tags: ['verb', 'structure'],
+    tagLabels: ['Interrogative أَنَّى', 'Circumstantial وَقَدْ', 'Rhyme -iyyā'],
+    summary: 'Zakariyyā\'s astonished question — not doubt but awe',
+    analysis: [
+      { word: 'أَنَّىٰ', detail: 'Interrogative adverb meaning "how? in what way? from where?" It is used in the Quran specifically to express wonder and awe at a divine possibility that exceeds human expectation — not skeptical denial. Compare Maryam\'s use of the same word in verse 20: أَنَّىٰ يَكُونُ لِي غُلَامٌ. The repetition of this exact phrasing in both stories is a deliberate Quranic literary echo — parallel reactions to parallel miracles.' },
+      { word: 'يَكُونُ لِي غُلَامٌ', detail: 'يَكُونُ: Form I imperfect of كَانَ, here used as a full existential verb ("to exist/come to be"). لِي: dative (for me). غُلَامٌ: subject, marfūʿ — indefinite (no article). The construction يَكُونُ لِي X means "there will be for me X." The indefiniteness of غُلَامٌ is significant: he is not asking about *the boy already named* (which would require a definite article) but about the sheer possibility of *any* boy.' },
+      { word: 'وَقَدْ بَلَغْتُ مِنَ الْكِبَرِ عِتِيًّا', detail: 'وَقَدْ: the particle قَدْ with a perfect verb expresses completion and emphasis — "and I have already reached..." بَلَغْتُ: Form I perfect, 1st person singular (I reached). الْكِبَرِ: noun from root ك-ب-ر (to be great, old), majrūr after مِن. عِتِيًّا: this is the lexically remarkable word — from root ع-ت-و (to exceed, to be extreme). Pattern: fiʿīl → ʿitiyy. It describes not just old age but the extreme, brittle frailty of advanced age. "-iyyā" rhyme word. Lane\'s Lexicon notes that ʿitiyy describes bones that have become dry and brittle from extreme old age — it deepens the physical image from verse 4.' }
+    ],
+    highlight: 'أَنَّىٰ يَكُونُ لِي غُلَامٌ — this exact sentence is repeated in Maryam\'s story (v. 20). The Quran intentionally echoes the grammar of wonder across two miraculous births.'
+  },
+  9: {
+    arabic: 'قَالَ كَذَٰلِكَ قَالَ رَبُّكَ هُوَ عَلَيَّ هَيِّنٌ وَقَدْ خَلَقْتُكَ مِن قَبْلُ وَلَمْ تَكُ شَيْئًا',
+    transliteration: 'qāla kadhālika qāla rabbuka huwa ʿalayya hayyinun wa-qad khalaqtuka min qablu wa-lam taku shayʾan',
+    translation: 'He said: Thus has your Lord said — it is easy for Me, and I created you before, when you were nothing',
+    tags: ['verb', 'structure'],
+    tagLabels: ['كَذَٰلِكَ formula', 'Jussive تَكُ (elided نون)', 'Divine speech'],
+    summary: 'The divine reply — ease, precedent, and creation from nothing',
+    analysis: [
+      { word: 'كَذَٰلِكَ قَالَ رَبُّكَ', detail: 'كَذَٰلِكَ: demonstrative adverb "thus/so." كَ = preposition "like," ذَا = demonstrative "that," لِكَ = pointing particle. The formula كَذَٰلِكَ قَالَ رَبُّكَ or كَذَٰلِكَ قَالَ اللهُ appears throughout the Quran as an authoritative quotation marker — "Thus has your Lord said." It precedes and frames a divine decree, giving it maximum authority before the content is stated.' },
+      { word: 'هُوَ عَلَيَّ هَيِّنٌ', detail: 'A complete nominal sentence (jumla ismiyyah): هُوَ = subject (mubtadaʾ), pronoun referring to the birth of Yaḥyā. عَلَيَّ: preposition عَلَى + first-person suffix (upon Me/for Me). هَيِّنٌ: predicate (khabar), marfūʿ — adjective from root ه-و-ن (to be easy, light). The ي-ّ doubled indicates the faʿʿil pattern, an intensified adjective. "It is easy for Me" — the simplicity of the sentence mirrors the ease it describes.' },
+      { word: 'وَلَمْ تَكُ شَيْئًا', detail: 'لَمْ: negation + jussive. تَكُ: the jussive of كَانَ with the nūn elided (تَكُنْ → تَكُ). The elision of nūn in jussive كَانَ is a standard feature of Quranic and Classical Arabic that appears frequently — تَكُ, يَكُ, أَكُ are all valid. شَيْئًا: "a thing," direct object (or predicate of كَانَ here used as a near-copula), manṣūb. The phrase: "when you were not even a thing" — the most radical statement of divine creative power: Zakariyyā himself was once absolute non-existence, and God created him. Creating Yaḥyā is therefore no greater a challenge.' }
+    ],
+    highlight: 'وَلَمْ تَكُ شَيْئًا: the elision of نون in the jussive of كَانَ (تَكُنْ → تَكُ) is a Quranic grammatical feature. You will see يَكُ frequently. Creation from sheer nothing is the theological argument.'
+  },
+  10: {
+    arabic: 'قَالَ رَبِّ اجْعَل لِّي آيَةً قَالَ آيَتُكَ أَلَّا تُكَلِّمَ النَّاسَ ثَلَاثَ لَيَالٍ سَوِيًّا',
+    transliteration: 'qāla rabbi jʿal lī āyatan qāla āyatuka allā tukallima n-nāsa thalātha layālin sawiyyan',
+    translation: 'He said: My Lord, make for me a sign. He said: Your sign is that you shall not speak to people for three nights, while being sound',
+    tags: ['verb', 'structure'],
+    tagLabels: ['أَلَّا (أَنْ + لَا)', 'Subjunctive mood', 'Rhyme -iyyā'],
+    summary: 'The sign of silence — and the grammar of prohibition in a noun clause',
+    analysis: [
+      { word: 'اجْعَل لِّي آيَةً', detail: 'اجْعَل: Form I imperative of ج-ع-ل (make). لِّي: preposition لـ + pronoun. آيَةً: "sign, miracle" — from root أ-ي-ي. Indefinite, manṣūb as direct object. Zakariyyā\'s request for a sign (āya) is itself an act of faith, not doubt — he asks for a private confirmation so he can begin his thanksgivings.' },
+      { word: 'آيَتُكَ أَلَّا تُكَلِّمَ', detail: 'آيَتُكَ: mubtadaʾ (subject of a nominal sentence), marfūʿ. The khabar (predicate) is the clause أَلَّا تُكَلِّمَ — "your sign is that you do not speak." أَلَّا: contraction of أَنْ (the subordinating particle that introduces a verbal noun clause) + لَا (negation). Together they negate the following verb and cast it into the subjunctive (manṣūb) mood. تُكَلِّمَ: Form II imperfect of ك-ل-م (to speak to), subjunctive mood (manṣūb, hence final ḍamma drops to fatḥa in the imperfect). Form II adds the meaning of speaking *to* someone directly.' },
+      { word: 'ثَلَاثَ لَيَالٍ سَوِيًّا', detail: 'ثَلَاثَ لَيَالٍ: "three nights" — numeral ثَلَاثَ + plural noun لَيَالٍ (nights, broken plural of لَيْلَة from root ل-ي-ل). Note the Arabic rule of gender polarity in numerals: the word لَيَالٍ is grammatically feminine, so the numeral ثَلَاث takes the masculine form ثَلَاثَ (gender switches for 3–10). سَوِيًّا: adjective from root س-و-ي (to be sound, complete, straight). Manṣūb as ḥāl (circumstantial accusative) — "while being sound/intact." "-iyyā" rhyme word. The sign is not illness but miraculous voluntary silence while physically healthy.' }
+    ],
+    highlight: 'أَلَّا تُكَلِّمَ: the particle أَنْ + لَا creates a negative noun clause. The subjunctive mood (manṣūb) of the verb after أَنْ is one of the most important grammatical patterns in the Quran — learn to recognize it.'
+  },
+  11: {
+    arabic: 'فَخَرَجَ عَلَىٰ قَوْمِهِ مِنَ الْمِحْرَابِ فَأَوْحَىٰ إِلَيْهِمْ أَن سَبِّحُوا بُكْرَةً وَعَشِيًّا',
+    transliteration: 'fa-kharaja ʿalā qawmihi mina l-miḥrābi fa-awḥā ilayhim an sabbiḥū bukratan wa-ʿashiyyan',
+    translation: 'So he came out to his people from the sanctuary and signaled to them to glorify in the morning and evening',
+    tags: ['verb', 'structure'],
+    tagLabels: ['فَـ narrative sequence', 'Form IV أَوْحَى', 'أَنْ + imperative', 'Rhyme -iyyā'],
+    summary: 'Silent communication — the grammar of indirect command',
+    analysis: [
+      { word: 'فَخَرَجَ ... فَأَوْحَىٰ', detail: 'Both verbs are introduced by فَـ (fāʾ al-taʿqīb — the particle of immediate sequence). فَـ here means "and immediately/then he..." conveying rapid narrative movement: he came out, and right then signaled. خَرَجَ: Form I perfect, he exited. أَوْحَىٰ: Form IV perfect from root و-ح-ي (to reveal, to signal). Form IV (afʿala) of this root means "to send a revelation/signal to." The word وَحْي in Islamic theology refers specifically to divine revelation, but here it means Zakariyyā made gestures/signs to his people — because he was under the sign of silence.' },
+      { word: 'مِنَ الْمِحْرَابِ', detail: 'الْمِحْرَاب: noun of place (ism al-makān) from root ح-ر-ب (war, striving). Pattern: mifʿāl → miḥrāb. Originally: the most honoured/defended part of a building. In Quranic usage: the prayer sanctuary, the prayer niche, the chamber of worship where Zakariyyā had been in seclusion. Majrūr after مِن.' },
+      { word: 'أَن سَبِّحُوا بُكْرَةً وَعَشِيًّا', detail: 'أَن: here introducing an indirect command (tafsīriyyah — the explanatory أَنْ, translatable as "that"). سَبِّحُوا: Form II imperative plural from root س-ب-ح (to glorify, to swim). Form II of س-ب-ح means to actively glorify God (transitive). Plural masculine: "glorify (all of you)!" بُكْرَةً: "in the morning" — ẓarf al-zamān (adverb of time), manṣūb. عَشِيًّا: "in the evening" — also ẓarf al-zamān, manṣūb. "-iyyā" rhyme word. The sign of silence does not stop his worship or his instruction to his community — he communicates the essential through gesture.' }
+    ],
+    highlight: 'أَوْحَىٰ إِلَيْهِمْ: the very word used for divine revelation (وَحْي) is used for Zakariyyā\'s gestural communication — a deliberate lexical echo connecting human sign-language to divine speech.'
+  },
+  12: {
+    arabic: 'يَا يَحْيَىٰ خُذِ الْكِتَابَ بِقُوَّةٍ وَآتَيْنَاهُ الْحُكْمَ صَبِيًّا',
+    transliteration: 'yā yaḥyā khudhi l-kitāba bi-quwwatin wa-ātaynāhu l-ḥukma ṣabiyyan',
+    translation: 'O Yaḥyā, take the Scripture with strength — and We gave him judgment while still a child',
+    tags: ['verb', 'structure'],
+    tagLabels: ['Form VIII خُذِ', 'Form IV آتَيْنَا', 'ḥāl accusative صَبِيًّا', 'Rhyme -iyyā'],
+    summary: 'The first divine address to Yaḥyā — command and gift',
+    analysis: [
+      { word: 'يَا يَحْيَىٰ خُذِ الْكِتَابَ بِقُوَّةٍ', detail: 'يَا: vocative. يَحْيَىٰ: diptote, manṣūb in vocative. خُذِ: Form I imperative of أ-خ-ذ (to take) — the hamza is dropped in the imperative: خُذْ, with kasra for liaison (khudhi l-kitāba). الْكِتَابَ: direct object, manṣūb — "the Scripture/the Book." With the definite article, it refers to the Torah/divine guidance given to Yaḥyā. بِقُوَّةٍ: preposition بِـ + noun قُوَّة (strength, power) from root ق-و-ي. Majrūr. The command to take the Scripture "with strength" (bi-quwwatin) is the same phrase used for Moses and the Torah elsewhere in the Quran — a deliberate inter-surah connection.' },
+      { word: 'وَآتَيْنَاهُ الْحُكْمَ صَبِيًّا', detail: 'آتَيْنَا: Form IV perfect (afʿala pattern) from root أ-ت-ي/و (to come, to bring). Form IV means "to give/bring to someone." First-person plural (majestic). هُ: direct object suffix (him). الْحُكْمَ: second object of آتى (Form IV takes two objects: "We gave him the judgment") — ḥukm from root ح-ك-م (to judge, to be wise). Refers to wisdom, prophethood, and sound judgment. صَبِيًّا: ḥāl (circumstantial accusative), manṣūb — from root ص-ب-و (to be a child, to incline). "-iyyā" rhyme word. "While he was still a child." The ḥāl states the concurrent circumstance: at the very time the divine gift was given, Yaḥyā was already a child — the gift came before adulthood.' }
+    ],
+    highlight: 'صَبِيًّا is a ḥāl (circumstantial accusative) — telling you the state of Yaḥyā at the time of receiving prophethood. The ḥāl construction is one of Arabic\'s most expressive grammatical tools.'
+  },
+  13: {
+    arabic: 'وَحَنَانًا مِّن لَّدُنَّا وَزَكَاةً وَكَانَ تَقِيًّا',
+    transliteration: 'wa-ḥanānan min ladunnā wa-zakātan wa-kāna taqiyyan',
+    translation: 'And tenderness from Ourselves and purity — and he was God-fearing',
+    tags: ['noun', 'structure'],
+    tagLabels: ['Elliptical maṣdar', 'Rare vocabulary', 'Rhyme -iyyā'],
+    summary: 'The rarest and most tender verse — ellipsis and the gift of ḥanān',
+    analysis: [
+      { word: 'وَحَنَانًا مِّن لَّدُنَّا', detail: 'حَنَانًا: this is the most emotionally distinctive word in this passage. Root: ح-ن-ن (to feel tender compassion, deep affection). Pattern: faʿāl → ḥanān. Case: manṣūb — but the governing verb is elided (ellipsis, ḥadhf). The implied verb is "We gave him" (وَآتَيْنَاهُ) carried forward from verse 12: "and [We gave him] tenderness from Ourselves." The word ḥanān implies deep, warm, maternal-type affection — a soft heart toward all creation. It is described by scholars as among the rarest divine gifts mentioned in the Quran. مِن لَّدُنَّا: "from Our immediate presence" — the same لَدُن construction as in verse 5 (لَّدُنكَ), now applied to God: لَدُنَّا (from Us).' },
+      { word: 'وَزَكَاةً', detail: 'زَكَاةً: manṣūb, also governed by the implied verb. Root: ز-ك-و (to grow, to be pure, to be praiseworthy). In this context it means moral purity and spiritual growth — not the fiscal zakāh (charity), though both words share the same root. The connection is meaningful: purity of soul and the giving of wealth both come from the same concept of spiritual growth and cleansing.' },
+      { word: 'وَكَانَ تَقِيًّا', detail: 'كَانَ: nāqiṣah verb (past). تَقِيًّا: predicate (khabar kāna), manṣūb — adjective from root و-ق-ي (to protect, to guard). Pattern: faʿīl → taqiyy. The tāʾ of taqiyy comes from the wāw first radical (و-ق-ي → وَقَى → تَقِيّ). A muttaqī (the more common derived form) is one who protects himself through consciousness of God. تَقِيًّا emphasizes the *quality* of his God-consciousness as an inherent characteristic. "-iyyā" rhyme word.' }
+    ],
+    highlight: 'حَنَانًا is a manṣūb maṣdar with its governing verb (آتَيْنَاهُ) deleted by ellipsis — the grammatical gap itself performs the tenderness: too great to be contained in a full sentence.'
+  },
+  14: {
+    arabic: 'وَبَارًّا بِوَالِدَيْهِ وَلَمْ يَكُن جَبَّارًا عَصِيًّا',
+    transliteration: 'wa-bārran bi-wālidayhi wa-lam yakun jabbāran ʿaṣiyyan',
+    translation: 'And dutiful to his parents — and he was not tyrannical or disobedient',
+    tags: ['verb', 'structure'],
+    tagLabels: ['Active participle بَارّ', 'Dual وَالِدَيْن', 'Rhyme -iyyā'],
+    summary: 'Yaḥyā\'s moral portrait — two more characteristics in the "-iyyā" rhyme',
+    analysis: [
+      { word: 'وَبَارًّا بِوَالِدَيْهِ', detail: 'بَارًّا: active participle (ism fāʿil) from root ب-ر-ر (to be dutiful, righteous, good). Pattern: fāʿil → bārr. Manṣūb — another ḥāl or a continuation of the list of qualities granted to Yaḥyā (following the pattern of the preceding verse). بِوَالِدَيْهِ: preposition بِـ + dual noun وَالِدَان (parents, both father and mother) in the genitive dual form: وَالِدَيْهِ. The dual يْن becomes يْ in iḍāfah, with the pronoun هِ (his) attached. Dual nouns in Arabic take ان in the nominative and يْن in the accusative/genitive — one of the most important morphological forms to recognize.' },
+      { word: 'وَلَمْ يَكُن جَبَّارًا عَصِيًّا', detail: 'لَمْ يَكُن: negation + jussive of كَانَ (here with the full نون retained, unlike verse 9\'s تَكُ). جَبَّارًا: predicate of كَانَ, manṣūb — from root ج-ب-ر (to compel, to set bones). Pattern: faʿʿāl → jabbār (intensive). Meaning: tyrant, one who compels by force, arrogant oppressor. This is one of God\'s own names (Al-Jabbār — the Compeller) but applied to humans it is deeply negative. عَصِيًّا: second predicate, manṣūb — from root ع-ص-ي (to disobey). Pattern: faʿīl → ʿaṣiyy. "-iyyā" rhyme word. The negative portrait (what Yaḥyā was *not*) defines the positive through contrast.' }
+    ],
+    highlight: 'وَالِدَيْهِ: the dual genitive form. The dual (مُثَنَّى) is one of Arabic\'s most distinctive features — a separate grammatical number between singular and plural, with its own case endings.'
+  },
+  15: {
+    arabic: 'وَسَلَامٌ عَلَيْهِ يَوْمَ وُلِدَ وَيَوْمَ يَمُوتُ وَيَوْمَ يُبْعَثُ حَيًّا',
+    transliteration: 'wa-salāmun ʿalayhi yawma wulida wa-yawma yamūtu wa-yawma yubʿathu ḥayyan',
+    translation: 'And peace be upon him the day he was born, and the day he dies, and the day he is raised alive',
+    tags: ['noun', 'verb', 'structure'],
+    tagLabels: ['Nominal sentence du\'āʾ', 'Passive وُلِدَ/يُبْعَثُ', 'Three temporal clauses', 'Rhyme -iyyā'],
+    summary: 'The closing benediction — the most structurally perfect verse in this passage',
+    analysis: [
+      { word: 'وَسَلَامٌ عَلَيْهِ', detail: 'سَلَامٌ: noun from root س-ل-م (peace, safety, submission). Marfūʿ with tanwīn — this is the mubtadaʾ (subject) of a nominal sentence. The predicate is عَلَيْهِ (upon him) — a prepositional phrase functioning as khabar. The sentence is declarative but functions as a benediction (duʿāʾ): "Peace be upon him." The use of a nominal sentence (not a verbal one) gives the peace a quality of permanence and stability — it is not an event but a state.' },
+      { word: 'يَوْمَ وُلِدَ', detail: 'يَوْمَ: ẓarf al-zamān (adverb of time), manṣūb — "on the day." وُلِدَ: Form I passive perfect from root و-ل-د (to give birth). Passive pattern: fuʿila → wulida. "The day he was born." The passive voice removes the human agent (the mother) and focuses the statement on the divine event — birth as something received, not merely performed.' },
+      { word: 'وَيَوْمَ يَمُوتُ وَيَوْمَ يُبْعَثُ حَيًّا', detail: 'يَمُوتُ: Form I imperfect from root م-و-ت (to die) — hollow verb. The present/future tense: "the day he will die." يُبْعَثُ: Form I passive imperfect from root ب-ع-ث (to send, to resurrect). Passive: he is raised up. حَيًّا: ḥāl (circumstantial accusative), manṣūb — "while alive." From root ح-ي-ي. "-iyyā" rhyme word. The three time-points — birth (passive past), death (active future), resurrection (passive future) — create a complete arc of existence. The peace covers all three moments: entrance into life, exit from life, and return to life.' }
+    ],
+    highlight: 'Three temporal clauses: يَوْمَ وُلِدَ (passive perfect) — يَوْمَ يَمُوتُ (active imperfect) — يَوْمَ يُبْعَثُ حَيًّا (passive imperfect). The shifts in tense and voice map the entire arc of human existence. This structure recurs almost identically in verse 33 for ʿĪsā.'
+  }
+};
