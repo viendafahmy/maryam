@@ -3,354 +3,352 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Learn Arabic - Surah Maryam</title>
+<meta name="theme-color" content="#F7F6F3">
+<meta name="description" content="A personal Quranic Arabic study companion — verse grammar, root morphology, and word-by-word analysis.">
+<title>Quranic Arabic — Study Companion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
 
-  :root {
-    /* Elegant green-beige palette */
-    --bg-page-1: #F4EFE3;
-    --bg-page-2: #E7E4D3;
-    --bg-page-3: #C9D3B7;
-    --bg-page-4: #DCC9A8;
+:root {
+  --bg:            #F7F6F3;
+  --surface:       #FFFFFF;
+  --border:        #E2E0DA;
+  --border-strong: #C8C5BC;
+  --text-primary:  #1A1916;
+  --text-secondary:#5C5A55;
+  --text-muted:    #9C9A95;
+  --maryam-accent: #4A6B3A;
+  --kahf-accent:   #2C5278;
+  --font-sans:     'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --radius:        4px;
+}
 
-    --surface-1: rgba(255, 253, 247, 0.50);
-    --surface-2: rgba(255, 253, 247, 0.72);
-    --surface-strong: rgba(255, 253, 247, 0.85);
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  min-height: 100dvh;
+  -webkit-tap-highlight-color: transparent;
+}
 
-    --border: rgba(94, 108, 79, 0.18);
-    --border-strong: rgba(84, 99, 68, 0.34);
-    --border-accent: rgba(107, 138, 84, 0.5);
-    --radius: 16px;
+.page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: clamp(40px, 8vw, 72px) clamp(20px, 5vw, 40px) 80px;
+}
 
-    --text-primary: #2B3624;
-    --text-secondary: #5A6752;
-    --text-muted: #8B9280;
+/* HEADER */
+.site-header {
+  margin-bottom: 56px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
 
-    --bg-accent: rgba(114, 143, 89, 0.16);
-    --text-accent: #46612F;
+.site-title {
+  font-size: clamp(20px, 4vw, 26px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
 
-    --bg-success: rgba(103, 140, 84, 0.18);
-    --text-success: #395A28;
+.site-sub {
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
 
-    --bg-warning: rgba(199, 165, 99, 0.24);
-    --text-warning: #8C6A26;
+/* SECTION LABEL */
+.section-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
 
-    --bg-pro: rgba(88, 133, 120, 0.18);
-    --text-pro: #2F5C51;
+/* SURAH LIST */
+.surah-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 56px;
+}
 
-    --bg-danger: rgba(178, 106, 83, 0.18);
-    --text-danger: #8A4530;
+/* SURAH CARD */
+.surah-card {
+  background: var(--surface);
+  padding: 24px 24px 20px;
+  border-left: 3px solid transparent;
+  transition: background 0.12s ease;
+}
 
-    --glass-shadow: 0 8px 28px rgba(58, 68, 45, 0.14), 0 1px 0 rgba(255,255,255,0.6) inset;
-    --glass-shadow-sm: 0 4px 14px rgba(58, 68, 45, 0.10), 0 1px 0 rgba(255,255,255,0.55) inset;
+.surah-card[data-surah="maryam"] { border-left-color: var(--maryam-accent); }
+.surah-card[data-surah="kahf"]   { border-left-color: var(--kahf-accent); }
+.surah-card[data-surah="coming"] { border-left-color: var(--border); opacity: 0.5; }
 
-    /* Sans-serif stack for all Latin text. Arabic keeps its own font (Amiri) elsewhere. */
-    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-  }
+.surah-card:hover:not([data-surah="coming"]) { background: #FAFAF8; }
 
-  * { box-sizing: border-box; }
+.card-top {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 4px;
+}
 
-  html, body, button, input, textarea {
-    font-family: var(--font-sans);
-  }
+.card-chapter {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-family: monospace;
+  flex-shrink: 0;
+}
 
-  html { -webkit-text-size-adjust: 100%; }
+.card-name {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
 
-  /* ---- Liquid glass backdrop ---- */
-  body {
-    position: relative;
-    margin: 0;
-    overflow-x: hidden;
-    -webkit-tap-highlight-color: transparent;
-    min-height: 100vh;
-    min-height: 100dvh;
-  }
+.card-meta {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
 
-  /* Fixed background lives on a pseudo-element, not body itself —
-     background-attachment:fixed is unreliable/janky on iOS Safari,
-     a position:fixed layer behind everything works everywhere. */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    background:
-      radial-gradient(ellipse 900px 600px at 8% 0%, var(--bg-page-4) 0%, transparent 60%),
-      radial-gradient(ellipse 900px 700px at 100% 15%, var(--bg-page-3) 0%, transparent 55%),
-      radial-gradient(ellipse 800px 600px at 20% 100%, var(--bg-page-3) 0%, transparent 55%),
-      linear-gradient(160deg, var(--bg-page-1), var(--bg-page-2));
-  }
+/* MODULE LINKS */
+.card-modules {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
 
-  .maryam-explorer {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: clamp(14px, 3vw, 28px);
-    color: var(--text-primary);
-  }
+.module-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid var(--border-strong);
+  color: var(--text-secondary);
+  background: var(--bg);
+  transition: border-color 0.12s, color 0.12s, background 0.12s;
+}
 
-  /* ---- Header ---- */
-  .explorer-header { margin-bottom: 18px; padding: 0 2px; }
-  .explorer-title {
-    font-family: var(--font-sans);
-    font-weight: 600;
-    font-size: clamp(19px, 4vw, 25px);
-    color: var(--text-primary);
-    margin: 2px 2px 2px 2px;
-    line-height: 1.5;
-    letter-spacing: 0.005em;
-  }
-  .explorer-subtitle {
-    font-family: var(--font-sans);
-    font-size: 12.5px;
-    font-style: italic;
-    color: var(--text-muted);
-    margin: 5px 0 0;
-    letter-spacing: 0.03em;
-  }
+.module-link:hover {
+  background: var(--surface);
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+}
 
-  /* ---- Verse number picker ---- */
-  .verse-buttons-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 16px;
-    padding: 10px;
-    border-radius: var(--radius);
-    background: var(--surface-1);
-    backdrop-filter: blur(18px) saturate(160%);
-    -webkit-backdrop-filter: blur(18px) saturate(160%);
-    border: 0.5px solid var(--border);
-    box-shadow: var(--glass-shadow-sm);
-  }
+.surah-card[data-surah="maryam"] .module-link:hover {
+  border-color: var(--maryam-accent);
+  color: var(--maryam-accent);
+}
 
-  .verse-btn {
-    cursor: pointer;
-    padding: 6px 12px;
-    border: 0.5px solid var(--border-strong);
-    border-radius: calc(var(--radius) - 6px);
-    background: var(--surface-2);
-    color: var(--text-primary);
-    font-family: var(--font-sans);
-    font-size: 13px;
-    transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
-    min-width: 44px;
-    min-height: 44px;
-    text-align: center;
-  }
-  .verse-btn:hover { background: var(--surface-strong); transform: translateY(-1px); box-shadow: var(--glass-shadow-sm); }
-  .verse-btn:active { transform: translateY(0); }
-  .verse-btn.active {
-    background: linear-gradient(180deg, rgba(160,185,130,0.42), rgba(114,143,89,0.28));
-    border-color: var(--border-accent);
-    color: var(--text-accent);
-    font-weight: 600;
-    box-shadow: var(--glass-shadow-sm);
-  }
+.surah-card[data-surah="kahf"] .module-link:hover {
+  border-color: var(--kahf-accent);
+  color: var(--kahf-accent);
+}
 
-  /* ---- Glass panels ---- */
-  .glass-panel {
-    background: var(--surface-1);
-    backdrop-filter: blur(20px) saturate(170%);
-    -webkit-backdrop-filter: blur(20px) saturate(170%);
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius);
-    box-shadow: var(--glass-shadow);
-    position: relative;
-    overflow: hidden;
-  }
-  .glass-panel::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(255,255,255,0.35), rgba(255,255,255,0) 40%);
-    pointer-events: none;
-  }
+.module-link svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  opacity: 0.55;
+}
 
-  .verse-card { padding: 18px 20px; margin-bottom: 14px; }
-  .verse-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 6px; letter-spacing: 0.02em; }
-  .verse-transliteration { font-size: 12px; color: var(--text-secondary); margin-top: 8px; font-style: italic; }
-  .verse-translation { font-size: 12px; color: var(--text-primary); margin-top: 6px; line-height: 1.5; }
+.coming-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-family: monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--border-strong);
+  padding: 3px 8px;
+  border-radius: var(--radius);
+}
 
-  .verse-summary { font-size: 15px; font-weight: 600; color: var(--text-secondary); margin: 4px 2px 8px; }
+/* HOW TO USE */
+.how-section {
+  border-top: 1px solid var(--border);
+  padding-top: 40px;
+  margin-bottom: 48px;
+}
 
-  .tag { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; margin: 2px 4px 2px 0; letter-spacing: 0.01em; }
-  .tag-verb { background: var(--bg-success); color: var(--text-success); }
-  .tag-noun { background: var(--bg-accent); color: var(--text-accent); }
-  .tag-particle { background: var(--bg-warning); color: var(--text-warning); }
-  .tag-structure { background: var(--bg-pro); color: var(--text-pro); }
-  .tag-rhyme { background: var(--bg-danger); color: var(--text-danger); }
+.how-title {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
 
-  .arabic-large { font-family: 'Amiri', serif; font-size: clamp(25px, 5vw, 25px); direction: rtl; text-align: right; line-height: 1.9; color: var(--text-primary); }
+.how-steps { display: flex; flex-direction: column; }
 
-  .analysis-block { padding: 14px 16px; margin-top: 10px; }
-  .grammar-item { display: flex; flex-direction: column; gap: 4px; padding: 10px 0; border-bottom: 0.5px solid var(--border); }
-  .grammar-item:last-child { border-bottom: none; }
-  .grammar-word { font-family: 'Amiri', serif; font-size: 25px; direction: rtl; text-align: right; color: var(--text-primary); }
-  .grammar-detail { font-size: 12px; color: var(--text-secondary); line-height: 1.55; }
+.how-step {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
 
-  .highlight-card { padding: 12px 16px; margin-top: 12px; background: linear-gradient(135deg, rgba(160,185,130,0.22), rgba(114,143,89,0.12)); border-color: var(--border-accent); }
-  .highlight-label { font-size: 12px; font-weight: 700; color: var(--text-accent); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
-  .highlight-text { font-size: 12px; color: var(--text-primary); line-height: 1.55; }
+.how-step:last-child { border-bottom: none; }
 
-  /* ---- Root links (connects to the Root Explorer page) ---- */
-  .root-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 3px;
-    padding: 1px 8px;
-    margin: 0 1px;
-    border-radius: 20px;
-    background: var(--bg-success);
-    color: var(--text-success);
-    font-family: 'Amiri', serif;
-    font-size: 13px;
-    text-decoration: none;
-    border: 0.5px solid rgba(103, 140, 84, 0.4);
-    white-space: nowrap;
-    transition: background 0.15s ease, transform 0.15s ease;
-  }
-  .root-link:hover { background: rgba(103, 140, 84, 0.32); transform: translateY(-1px); }
-  .root-link::after { content: '↗'; font-family: var(--font-sans); font-size: 10px; }
+.step-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding-top: 2px;
+  letter-spacing: 0.02em;
+}
 
-  /* ---- Navigation ---- */
-  .nav-row { display: flex; gap: 8px; margin-top: 16px; justify-content: space-between; }
-  .nav-btn {
-    cursor: pointer;
-    flex: 1;
-    padding: 10px 12px;
-    border: 0.5px solid var(--border-strong);
-    border-radius: var(--radius);
-    background: var(--surface-1);
-    backdrop-filter: blur(18px) saturate(160%);
-    -webkit-backdrop-filter: blur(18px) saturate(160%);
-    color: var(--text-primary);
-    font-family: var(--font-sans);
-    font-size: 13px;
-    box-shadow: var(--glass-shadow-sm);
-    transition: background 0.18s ease, transform 0.18s ease;
-    min-height: 44px;
-  }
-  .nav-btn:hover { background: var(--surface-strong); transform: translateY(-1px); }
-  .nav-btn:active { transform: translateY(0); }
+.step-body {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
 
-  @media (max-width: 600px) {
-    .nav-row { flex-wrap: wrap; }
-    .nav-btn { flex: 1 1 100%; }
-    .verse-card, .analysis-block, .highlight-card { padding: 14px; }
-    .grammar-word { font-size: 25px; }
-  }
+.step-body strong {
+  font-weight: 500;
+  color: var(--text-primary);
+}
 
-  @media (prefers-reduced-motion: reduce) {
-    .verse-btn, .nav-btn { transition: none; }
-  }
+/* FOOTER */
+.page-footer {
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .surah-card { padding: 18px 16px 16px; }
+  .how-step { grid-template-columns: 1fr; gap: 4px; }
+  .step-label { font-size: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .surah-card, .module-link { transition: none; }
+}
+
+.module-link:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
+}
 </style>
 </head>
 <body>
 
-<div class="maryam-explorer">
-  <div class="explorer-header">
-    <h2 class="explorer-title">Learn Arabic - Surah Maryam</h2>
-    <p class="explorer-subtitle">Verse 1 – 15</p>
+<div class="page">
+
+  <header class="site-header">
+    <h1 class="site-title">Quranic Arabic</h1>
+    <p class="site-sub">Verse grammar &middot; Root morphology &middot; Word-by-word analysis</p>
+  </header>
+
+  <p class="section-label">Passages</p>
+
+  <div class="surah-list">
+
+    <div class="surah-card" data-surah="maryam">
+      <div class="card-top">
+        <span class="card-chapter">Ch. 19</span>
+        <span class="card-name">Surah Maryam</span>
+      </div>
+      <p class="card-meta">Verses 1–15 &middot; Makkī &middot; The story of Zakariyyā and Yaḥyā</p>
+      <div class="card-modules">
+        <a class="module-link" href="maryam/index.html">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="1"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="9" x2="9" y2="9"/></svg>
+          Verse Grammar
+        </a>
+        <a class="module-link" href="maryam/maryam_root_explorer.html">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="4" r="2"/><line x1="8" y1="6" x2="8" y2="9"/><line x1="8" y1="9" x2="4" y2="13"/><line x1="8" y1="9" x2="12" y2="13"/></svg>
+          Root Explorer
+        </a>
+      </div>
+    </div>
+
+    <div class="surah-card" data-surah="kahf">
+      <div class="card-top">
+        <span class="card-chapter">Ch. 18</span>
+        <span class="card-name">Surah Al-Kahf</span>
+      </div>
+      <p class="card-meta">Verses 60–82 &middot; Makkī &middot; The story of Mūsā and al-Khiḍr</p>
+      <div class="card-modules">
+        <a class="module-link" href="kahf/index.html">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="1"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="9" x2="9" y2="9"/></svg>
+          Verse Grammar
+        </a>
+        <a class="module-link" href="kahf/kahf_root_explorer.html">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="4" r="2"/><line x1="8" y1="6" x2="8" y2="9"/><line x1="8" y1="9" x2="4" y2="13"/><line x1="8" y1="9" x2="12" y2="13"/></svg>
+          Root Explorer
+        </a>
+      </div>
+    </div>
+
+    <div class="surah-card" data-surah="coming" aria-hidden="true">
+      <div class="card-top">
+        <span class="card-chapter">—</span>
+        <span class="card-name" style="color:var(--text-muted); font-weight:400;">More passages</span>
+      </div>
+      <p class="card-meta">Al-Fātiḥa &middot; Yūsuf &middot; Al-Mulk &middot; ...</p>
+      <div class="card-modules">
+        <span class="coming-tag">Coming soon</span>
+      </div>
+    </div>
+
   </div>
 
-  <div class="verse-buttons-row" id="verse-buttons"></div>
+  <section class="how-section">
+    <p class="how-title">How to use</p>
+    <div class="how-steps">
+      <div class="how-step">
+        <span class="step-label">Verse Grammar</span>
+        <p class="step-body">Read a passage verse by verse. Each word is parsed by <strong>root, grammatical form, and case</strong>. Tap a root badge to jump directly to its Root Explorer entry.</p>
+      </div>
+      <div class="how-step">
+        <span class="step-label">Root Explorer</span>
+        <p class="step-body">Study a root in depth — all <strong>ten verb forms</strong> (awzān), derived nouns, participles, and maṣdars, with every occurrence in the passage highlighted.</p>
+      </div>
+      <div class="how-step">
+        <span class="step-label">Cross-reference</span>
+        <p class="step-body">Roots shared between passages — <strong>ر-ح-م, س-ل-م, ع-ب-د</strong> — link across surahs. Learn a root once; recognize it everywhere.</p>
+      </div>
+    </div>
+  </section>
 
-  <div id="verse-display"></div>
+  <footer class="page-footer">
+    <span>corpus.quran.com &middot; quranwbw.com</span>
+    <span>Personal study &middot; Not for redistribution</span>
+  </footer>
 
-  <div class="nav-row">
-    <button class="nav-btn" onclick="navigate(-1)">← Previous verse</button>
-    <button class="nav-btn" onclick="sendPrompt('Give me a deeper grammatical analysis of verse ' + currentVerse + ' of Surah Maryam')">Deep-dive this verse ↗</button>
-    <button class="nav-btn" onclick="navigate(1)">Next verse →</button>
-  </div>
 </div>
-
-<script src="data/verses.js"></script>
-<script>
-let currentVerse = 1;
-
-/* ═══════════════════════════════════════════════════════════════
-   ROOT LINKING — connects this page to maryam_root_explorer.html
-   Any of these exact Arabic root strings, wherever they appear inside
-   a verse's analysis text, get turned into a clickable chip that opens
-   the Root Explorer already scrolled to that root's detail page.
-   Only roots that actually have a detail page in the Root Explorer
-   are listed here — add a line here whenever you add a new root there.
-═══════════════════════════════════════════════════════════════ */
-const ROOT_EXPLORER_URL = 'maryam_root_explorer.html'; // update this if you deploy it under a different name/path
-const ROOT_LINKS = {
-  'ر-ب-ب': 'rbb',
-  'ر-ح-م': 'rhm',
-  'ق-و-ل': 'qwl',
-  'و-ل-د': 'wld',
-  'ح-ي-ي': 'hyy',
-  'س-ل-م': 'slm'
-};
-
-function linkifyRoots(text) {
-  let out = text;
-  for (const [pattern, id] of Object.entries(ROOT_LINKS)) {
-    out = out.split(pattern).join(
-      `<a class="root-link" href="${ROOT_EXPLORER_URL}?root=${id}" target="_blank" rel="noopener">${pattern}</a>`
-    );
-  }
-  return out;
-}
-
-// verses data now loaded from data/verses.js (see <script> tag in <head>)
-
-
-function renderVerse(n) {
-  currentVerse = n;
-  document.querySelectorAll('.verse-btn').forEach(b => {
-    b.classList.toggle('active', parseInt(b.dataset.v) === n);
-  });
-  const v = verses[n];
-  const tagHtml = v.tagLabels.map((lbl, i) => {
-    const cls = ['tag-verb','tag-noun','tag-particle','tag-structure','tag-rhyme'][i % 5];
-    return `<span class="tag ${cls}">${lbl}</span>`;
-  }).join('');
-
-  document.getElementById('verse-display').innerHTML = `
-    <div class="glass-panel verse-card">
-      <div class="verse-meta">Verse ${n} of 15</div>
-      <div class="arabic-large">${v.arabic}</div>
-      <div class="verse-transliteration">${v.transliteration}</div>
-      <div class="verse-translation">${v.translation}</div>
-      <div style="margin-top:8px;">${tagHtml}</div>
-    </div>
-    <div class="verse-summary">${v.summary}</div>
-    <div class="glass-panel analysis-block">
-      ${v.analysis.map(a => `
-        <div class="grammar-item">
-          <div class="grammar-word">${a.word}</div>
-          <div class="grammar-detail">${linkifyRoots(a.detail)}</div>
-        </div>
-      `).join('')}
-    </div>
-    <div class="glass-panel highlight-card">
-      <div class="highlight-label">Key grammatical insight</div>
-      <div class="highlight-text">${linkifyRoots(v.highlight)}</div>
-    </div>
-  `;
-}
-
-function navigate(dir) {
-  const next = Math.max(1, Math.min(15, currentVerse + dir));
-  renderVerse(next);
-}
-
-const btns = document.getElementById('verse-buttons');
-for (let i = 1; i <= 15; i++) {
-  const b = document.createElement('button');
-  b.className = 'verse-btn';
-  b.dataset.v = i;
-  b.textContent = i;
-  b.onclick = () => renderVerse(i);
-  btns.appendChild(b);
-}
-renderVerse(1);
-</script>
-
 </body>
 </html>

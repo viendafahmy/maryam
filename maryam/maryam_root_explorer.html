@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2B3624">
+<title>Quranic Root Explorer — Surah Maryam</title>
+<link rel="manifest" href="#" />
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+
+  /* ── TOKENS ── */
+  :root {
+    /* Retinted to match index.html's elegant green-beige palette.
+       Variable NAMES are unchanged on purpose — every rule below already
+       references --ink, --gold, --sage, etc., so only the values need to move. */
+    --ink:        #2B3624;   /* was near-black, now deep forest green (index: --text-primary) */
+    --parchment:  #F4EFE3;   /* was warm white, now warm beige (index: --bg-page-1) */
+    --parchment2: #E7E4D3;   /* was light tan, now soft sage-beige (index: --bg-page-2) */
+    --parchment3: #DCD5BE;   /* was deeper tan, now deeper sage-beige (hover/active states) */
+    --gold:       #4C6B3E;   /* was gold, now sage green accent (index: --text-accent) */
+    --gold-light: #E4EAD9;   /* light sage tint for divine/accent backgrounds */
+    --sage:       #3E5C31;   /* verb/success green (index: --text-success) */
+    --sage-light: #DCE7D3;   /* light green tint (index: --bg-success, opaque) */
+    --rust:       #8A4530;   /* participle/danger terracotta (index: --text-danger) */
+    --rust-light: #F0DED5;   /* light terracotta tint (index: --bg-danger, opaque) */
+    --blue:       #2F5C51;   /* noun accent — muted teal instead of blue, stays in the earthy family */
+    --blue-light: #DAE6E2;   /* light teal tint */
+    --violet:     #8C6A26;   /* maṣdar accent — warm ochre instead of violet, stays earthy */
+    --violet-light:#EFE6CF;  /* light ochre tint */
+    --muted:      #8B9280;   /* index: --text-muted */
+    --border:     #D6CDB5;   /* warm beige border, same family as parchment */
+    --radius:     6px;
+    --shadow:     0 1px 4px rgba(43,54,36,0.10);
+
+    /* Sans-serif stack, matching index.html. Arabic text below still uses Amiri —
+       that's a script choice, not a "serif vs sans" choice, so it's untouched. */
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--parchment);
+    color: var(--ink);
+    min-height: 100vh;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ── LAYOUT ── */
+  #app { display: flex; flex-direction: column; min-height: 100vh; }
+
+  header {
+    background: var(--ink);
+    color: var(--parchment);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  .header-title {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header-title .en {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-family: var(--font-sans);
+  }
+
+  .header-title .ar {
+    font-size: 20px;
+    direction: rtl;
+    color: var(--parchment);
+    line-height: 1.2;
+    margin-top: 2px;
+  }
+
+  .header-back {
+    font-size: 11px;
+    font-family: monospace;
+    color: var(--gold-light);
+    text-decoration: none;
+    border: 1px solid rgba(184,150,62,0.5);
+    padding: 6px 12px;
+    border-radius: var(--radius);
+    white-space: nowrap;
+    transition: background 0.12s;
+  }
+  .header-back:hover { background: rgba(184,150,62,0.15); }
+
+  .header-meta {
+    font-size: 12px;
+    color: #9B9189;
+    text-align: right;
+    font-family: monospace;
+  }
+
+  .main-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    flex: 1;
+    min-height: 0;
+  }
+
+  /* ── SIDEBAR ── */
+  #sidebar {
+    background: var(--parchment2);
+    border-right: 1px solid var(--border);
+    padding: 16px 0;
+    overflow-y: auto;
+    position: sticky;
+    top: 57px;
+    height: calc(100vh - 57px);
+  }
+
+  .sidebar-section-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    padding: 8px 18px 4px;
+    font-family: monospace;
+  }
+
+  .root-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 18px;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    transition: background 0.12s, border-color 0.12s;
+  }
+
+  .root-nav-item:hover { background: var(--parchment3); }
+  .root-nav-item.active {
+    background: var(--gold-light);
+    border-left-color: var(--gold);
+  }
+
+  .root-nav-arabic {
+    font-size: 20px;
+    direction: rtl;
+    min-width: 52px;
+    text-align: right;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .root-nav-info { flex: 1; min-width: 0; }
+
+  .root-nav-roman {
+    font-size: 11px;
+    font-family: monospace;
+    color: var(--gold);
+    display: block;
+  }
+
+  .root-nav-meaning {
+    font-size: 12px;
+    color: var(--muted);
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .root-nav-count {
+    font-size: 10px;
+    background: var(--parchment3);
+    color: var(--muted);
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-family: monospace;
+    white-space: nowrap;
+  }
+
+  /* ── MAIN CONTENT ── */
+  #main {
+    padding: 28px 36px;
+    overflow-y: auto;
+    height: calc(100vh - 57px);
+  }
+
+  /* ── ROOT HERO ── */
+  .root-hero {
+    display: flex;
+    align-items: flex-start;
+    gap: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+
+  .root-display {
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .root-arabic-large {
+    font-size: 64px;
+    direction: rtl;
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: 0.05em;
+    display: block;
+  }
+
+  .root-letters-separated {
+    font-size: 14px;
+    direction: rtl;
+    color: var(--gold);
+    font-family: monospace;
+    display: block;
+    margin-top: 4px;
+    letter-spacing: 0.2em;
+  }
+
+  .root-roman-large {
+    font-size: 14px;
+    font-family: monospace;
+    color: var(--muted);
+    display: block;
+    margin-top: 4px;
+  }
+
+  .root-meta { flex: 1; }
+
+  .root-meta h1 {
+    font-size: 22px;
+    font-weight: normal;
+    color: var(--ink);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+
+  .root-semantic {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+
+  .root-stats {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .stat-chip {
+    display: flex;
+    flex-direction: column;
+    padding: 6px 12px;
+    background: var(--parchment2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+
+  .stat-chip .stat-num {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--gold);
+    font-family: monospace;
+    line-height: 1;
+  }
+
+  .stat-chip .stat-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .root-notes {
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+    padding: 10px 14px;
+    background: var(--gold-light);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    margin-top: 28px;
+  }
+
+  .section-header:first-of-type { margin-top: 0; }
+
+  .section-title {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-family: monospace;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── FORM TABLE (ten verb forms) ── */
+  .forms-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 38px 90px 120px 1fr 130px;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: var(--parchment2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background 0.1s, border-color 0.1s;
+    border-left: 3px solid transparent;
+  }
+
+  .form-row:hover { background: var(--parchment3); }
+  .form-row.verb    { border-left-color: var(--sage); }
+  .form-row.na      { border-left-color: var(--border); opacity: 0.5; cursor: default; }
+  .form-row.active-row { background: var(--sage-light); border-color: var(--sage); }
+
+  .form-num {
+    font-family: monospace;
+    font-size: 11px;
+    color: var(--muted);
+    text-align: center;
+    background: var(--parchment3);
+    padding: 3px 0;
+    border-radius: 4px;
+  }
+
+  .form-arabic {
+    font-size: 18px;
+    direction: rtl;
+    text-align: right;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .form-pattern {
+    font-size: 11px;
+    font-family: monospace;
+    color: var(--gold);
+  }
+
+  .form-meaning {
+    font-size: 13px;
+    color: var(--ink);
+  }
+
+  .form-masdar {
+    font-size: 13px;
+    direction: rtl;
+    text-align: right;
+    color: var(--muted);
+  }
+
+  /* ── FORM DETAIL PANEL ── */
+  #form-detail {
+    background: var(--sage-light);
+    border: 1px solid var(--sage);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 20px;
+    display: none;
+  }
+
+  #form-detail.visible { display: block; }
+
+  .form-detail-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .form-detail-arabic {
+    font-size: 28px;
+    direction: rtl;
+    color: var(--ink);
+  }
+
+  .form-detail-title {
+    font-size: 13px;
+    font-family: monospace;
+    color: var(--sage);
+  }
+
+  .form-detail-body {
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.75;
+  }
+
+  .form-detail-body .label {
+    font-family: monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--sage);
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 2px;
+  }
+
+  .conj-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .conj-cell {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 6px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .conj-label { font-size: 10px; color: var(--muted); font-family: monospace; }
+  .conj-arabic { font-size: 15px; direction: rtl; }
+
+  /* ── NOUN / DERIVED FORMS ── */
+  .derived-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .derived-card {
+    background: var(--parchment2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: background 0.1s, border-color 0.1s;
+    border-top: 3px solid var(--border);
+  }
+
+  .derived-card:hover { background: var(--parchment3); }
+  .derived-card.noun-type     { border-top-color: var(--blue); }
+  .derived-card.part-type     { border-top-color: var(--rust); }
+  .derived-card.masdtar-type  { border-top-color: var(--violet); }
+  .derived-card.adj-type      { border-top-color: var(--gold); }
+
+  .derived-arabic {
+    font-size: 22px;
+    direction: rtl;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .derived-roman {
+    font-size: 11px;
+    font-family: monospace;
+    color: var(--gold);
+    display: block;
+  }
+
+  .derived-meaning {
+    font-size: 12px;
+    color: var(--ink);
+    margin-top: 4px;
+    display: block;
+  }
+
+  .derived-pattern {
+    font-size: 10px;
+    font-family: monospace;
+    color: var(--muted);
+    margin-top: 4px;
+    display: block;
+  }
+
+  .type-badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-top: 4px;
+    font-family: monospace;
+  }
+
+  .badge-noun    { background: var(--blue-light); color: var(--blue); }
+  .badge-part    { background: var(--rust-light); color: var(--rust); }
+  .badge-masdar  { background: var(--violet-light); color: var(--violet); }
+  .badge-adj     { background: var(--gold-light); color: var(--gold); }
+  .badge-verb    { background: var(--sage-light); color: var(--sage); }
+  .badge-plural  { background: var(--parchment3); color: var(--muted); }
+  .badge-divine  { background: #FFF4E0; color: #8B5E00; }
+
+  /* ── QURAN OCCURRENCES ── */
+  .occurrence-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .occurrence-card {
+    background: var(--parchment2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    border-left: 3px solid var(--gold);
+  }
+
+  .occurrence-ref {
+    font-size: 11px;
+    font-family: monospace;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  .occurrence-arabic {
+    font-size: 18px;
+    direction: rtl;
+    text-align: right;
+    line-height: 1.8;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .occurrence-highlight {
+    color: var(--rust);
+    font-weight: bold;
+  }
+
+  .occurrence-trans {
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ── MEMORY AID ── */
+  .memory-aid {
+    background: var(--gold-light);
+    border: 1px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin-bottom: 20px;
+  }
+
+  .memory-aid-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    font-family: monospace;
+    margin-bottom: 6px;
+  }
+
+  .memory-aid-body {
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  /* ── DETAIL PANEL (derived forms) ── */
+  #derived-detail {
+    background: var(--rust-light);
+    border: 1px solid var(--rust);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 20px;
+    display: none;
+  }
+  #derived-detail.visible { display: block; }
+
+  /* ── HOME / INTRO ── */
+  .home-hero {
+    text-align: center;
+    padding: 40px 20px 32px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 28px;
+  }
+
+  .home-quran-line {
+    font-size: 32px;
+    direction: rtl;
+    line-height: 1.8;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .home-subtitle {
+    font-size: 13px;
+    color: var(--muted);
+    font-family: monospace;
+  }
+
+  .home-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  .home-root-card {
+    background: var(--parchment2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: background 0.1s, box-shadow 0.1s;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .home-root-card:hover {
+    background: var(--parchment3);
+    box-shadow: var(--shadow);
+  }
+
+  .home-card-arabic {
+    font-size: 28px;
+    direction: rtl;
+    color: var(--ink);
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .home-card-info { flex: 1; }
+  .home-card-roman { font-size: 11px; font-family: monospace; color: var(--gold); }
+  .home-card-meaning { font-size: 13px; color: var(--ink); margin-top: 2px; }
+  .home-card-count { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  /* ── NAV TABS ── */
+  .tab-row {
+    display: flex;
+    gap: 4px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 20px;
+  }
+
+  .tab-btn {
+    padding: 8px 16px;
+    font-size: 12px;
+    font-family: monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    color: var(--muted);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.1s, border-color 0.1s;
+  }
+
+  .tab-btn:hover { color: var(--ink); }
+  .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ── LEGEND ── */
+  .legend {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: var(--muted);
+    font-family: monospace;
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .main-layout { grid-template-columns: 1fr; }
+    #sidebar {
+      position: static;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      overflow-x: auto;
+      padding: 8px 0;
+      gap: 0;
+    }
+    .sidebar-section-label { display: none; }
+    .root-nav-item {
+      flex-direction: column;
+      align-items: center;
+      padding: 8px 12px;
+      min-width: 70px;
+      border-left: none;
+      border-bottom: 3px solid transparent;
+      text-align: center;
+    }
+    .root-nav-item.active { border-bottom-color: var(--gold); border-left: none; }
+    .root-nav-info { display: none; }
+    .root-nav-count { display: none; }
+    #main { height: auto; padding: 20px 16px; }
+    .root-hero { flex-direction: column; gap: 16px; }
+    .root-arabic-large { font-size: 48px; }
+    .form-row { grid-template-columns: 30px 80px 1fr; }
+    .form-pattern, .form-masdar { display: none; }
+    .derived-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+    .home-grid { grid-template-columns: 1fr; }
+    header { flex-wrap: wrap; gap: 8px; }
+    .header-meta { text-align: left; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+
+  /* ── ARABIC TYPEFACE ──
+     All Arabic-bearing elements, consolidated in one rule so it's
+     obvious at a glance which script gets which font. Matches the
+     Amiri treatment used in index.html — a script choice, independent
+     of the serif→sans-serif change above (which only affects Latin text). */
+  .header-title .ar,
+  .root-nav-arabic,
+  .root-arabic-large,
+  .root-letters-separated,
+  .form-arabic,
+  .form-detail-arabic,
+  .conj-arabic,
+  .derived-arabic,
+  .occurrence-arabic,
+  .home-quran-line,
+  .home-card-arabic {
+    font-family: 'Amiri', serif;
+  }
+</style>
+</head>
+<body>
+<div id="app">
+
+<header>
+  <div class="header-title">
+    <span class="en">Quranic Root Explorer</span>
+    <span class="ar">مستكشف جذور القرآن</span>
+  </div>
+  <a class="header-back" href="index.html">← Back to Grammar Explorer</a>
+  <div class="header-meta">
+    Surah Maryam · 19<br>
+    <span style="color:#6B6259">Roots from vv. 1–15</span>
+  </div>
+</header>
+
+<div class="main-layout">
+  <nav id="sidebar" aria-label="Root navigation"></nav>
+  <main id="main" aria-live="polite"></main>
+</div>
+
+</div>
+
+<script src="data/roots.js"></script>
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   DATA
+═══════════════════════════════════════════════════════════════ */
+
+// ROOTS data now loaded from data/roots.js (see <script> tag in <head>)
+
+
+/* ═══════════════════════════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════════════════════════ */
+let activeRoot = ROOTS[0].id;
+
+// Read ?root=ID from the URL so links from the Grammar Explorer land
+// directly on the correct root instead of always defaulting to the first one.
+(function initFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  const requested = params.get('root');
+  if (requested && ROOTS.some(r => r.id === requested)) {
+    activeRoot = requested;
+  }
+})();
+
+let activeTab = 'forms';
+let activeFormRow = null;
+let activeDerivedCard = null;
+
+/* ═══════════════════════════════════════════════════════════════
+   RENDER SIDEBAR
+═══════════════════════════════════════════════════════════════ */
+function renderSidebar() {
+  const nav = document.getElementById('sidebar');
+  nav.innerHTML = `<div class="sidebar-section-label">Roots · Surah Maryam vv.1–15</div>` +
+    ROOTS.map(r => `
+      <div class="root-nav-item ${r.id === activeRoot ? 'active' : ''}" onclick="selectRoot('${r.id}')">
+        <div class="root-nav-arabic">${r.arabic}</div>
+        <div class="root-nav-info">
+          <span class="root-nav-roman">${r.roman}</span>
+          <span class="root-nav-meaning">${r.meaning.split(',')[0]}</span>
+        </div>
+        <div class="root-nav-count">${r.maryamCount}× in M19</div>
+      </div>
+    `).join('');
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RENDER MAIN
+═══════════════════════════════════════════════════════════════ */
+function renderMain() {
+  const r = ROOTS.find(x => x.id === activeRoot);
+  if (!r) return;
+  activeFormRow = null;
+  activeDerivedCard = null;
+
+  document.getElementById('main').innerHTML = `
+    <!-- HERO -->
+    <div class="root-hero">
+      <div class="root-display">
+        <span class="root-arabic-large">${r.arabic}</span>
+        <span class="root-letters-separated">${r.letters}</span>
+        <span class="root-roman-large">${r.roman}</span>
+      </div>
+      <div class="root-meta">
+        <h1>${r.meaning}</h1>
+        <p class="root-semantic">${r.semantic}</p>
+        <div class="root-stats">
+          <div class="stat-chip">
+            <span class="stat-num">${r.quranCount}</span>
+            <span class="stat-label">Times in Quran</span>
+          </div>
+          <div class="stat-chip">
+            <span class="stat-num">${r.maryamCount}</span>
+            <span class="stat-label">Times in Maryam</span>
+          </div>
+          <div class="stat-chip">
+            <span class="stat-num">${r.forms.filter(f=>f.attested).length}</span>
+            <span class="stat-label">Attested forms</span>
+          </div>
+        </div>
+        <div class="root-notes">${r.memoryAid}</div>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tab-row">
+      <button class="tab-btn ${activeTab==='forms'?'active':''}" onclick="switchTab('forms')">Verb Forms (أوزان)</button>
+      <button class="tab-btn ${activeTab==='derived'?'active':''}" onclick="switchTab('derived')">Derived Words</button>
+      <button class="tab-btn ${activeTab==='occ'?'active':''}" onclick="switchTab('occ')">In Surah Maryam</button>
+    </div>
+
+    <!-- FORMS TAB -->
+    <div class="tab-panel ${activeTab==='forms'?'active':''}" id="tab-forms">
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:var(--sage)"></div>Attested in Quran</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--border)"></div>Not attested</div>
+      </div>
+      <div class="forms-grid">
+        <div class="form-row" style="background:var(--parchment3); cursor:default; font-family:monospace; font-size:11px; color:var(--muted); padding:6px 14px;">
+          <div>Form</div><div style="text-align:right;">Past (3ms)</div><div>Pattern</div><div>Meaning</div><div style="text-align:right;">Maṣdar</div>
+        </div>
+        ${r.forms.map((f,i) => `
+          <div class="form-row ${f.attested?'verb':'na'}" onclick="${f.attested?`selectForm(${i})`:''}">
+            <div class="form-num">${f.num}</div>
+            <div class="form-arabic">${f.arabic}</div>
+            <div class="form-pattern">${f.pattern}</div>
+            <div class="form-meaning">${f.meaning}</div>
+            <div class="form-masdar">${f.masdar}</div>
+          </div>
+        `).join('')}
+      </div>
+      <div id="form-detail" class=""></div>
+    </div>
+
+    <!-- DERIVED TAB -->
+    <div class="tab-panel ${activeTab==='derived'?'active':''}" id="tab-derived">
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:var(--sage)"></div>Verb</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--blue)"></div>Noun</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--rust)"></div>Participle</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--violet)"></div>Maṣdar</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--gold)"></div>Adjective</div>
+      </div>
+      <div id="derived-detail"></div>
+      <div class="derived-grid">
+        ${r.derived.map((d,i) => `
+          <div class="derived-card ${d.type}-type" onclick="selectDerived(${i})">
+            <span class="derived-arabic">${d.arabic}</span>
+            <span class="derived-roman">${d.roman}</span>
+            <span class="derived-meaning">${d.meaning}</span>
+            <span class="derived-pattern">${d.pattern}</span>
+            <span class="type-badge ${d.badge}">${d.type === 'masdar' ? 'maṣdar' : d.type}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <!-- OCCURRENCES TAB -->
+    <div class="tab-panel ${activeTab==='occ'?'active':''}" id="tab-occ">
+      <div class="occurrence-list">
+        ${r.occurrences.map(o => `
+          <div class="occurrence-card">
+            <div class="occurrence-ref">Surah Maryam · ${o.ref}</div>
+            <div class="occurrence-arabic">${o.arabic}</div>
+            <div class="occurrence-trans">${o.trans}</div>
+            ${o.note ? `<div style="font-size:11px; color:var(--muted); margin-top:6px; font-family:monospace; border-top:1px solid var(--border); padding-top:6px;">${o.note}</div>` : ''}
+          </div>
+        `).join('')}
+      </div>
+      <div style="font-size:12px; color:var(--muted); font-family:monospace; margin-top:8px;">
+        For full morphological analysis of every occurrence, see corpus.quran.com · Search surah 19
+      </div>
+    </div>
+  `;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   INTERACTIONS
+═══════════════════════════════════════════════════════════════ */
+function selectRoot(id) {
+  activeRoot = id;
+  activeTab = 'forms';
+  renderSidebar();
+  renderMain();
+  document.getElementById('main').scrollTop = 0;
+  // Keep the URL in sync so the page can be bookmarked/shared/reloaded on this root.
+  const url = new URL(window.location);
+  url.searchParams.set('root', id);
+  window.history.replaceState({}, '', url);
+}
+
+function switchTab(tab) {
+  activeTab = tab;
+  renderMain();
+}
+
+function selectForm(i) {
+  const r = ROOTS.find(x => x.id === activeRoot);
+  const f = r.forms[i];
+  if (!f || !f.attested) return;
+
+  const detail = document.getElementById('form-detail');
+  // toggle
+  if (activeFormRow === i) {
+    activeFormRow = null;
+    detail.classList.remove('visible');
+    detail.innerHTML = '';
+    document.querySelectorAll('.form-row').forEach(el => el.classList.remove('active-row'));
+    return;
+  }
+  activeFormRow = i;
+  document.querySelectorAll('.form-row').forEach((el,idx) => {
+    el.classList.toggle('active-row', idx === i+1);
+  });
+
+  const perfHTML = f.perfect ? `
+    <span class="label">Perfect (past) tense</span>
+    <div class="conj-grid">${f.perfect.map(c=>`<div class="conj-cell"><span class="conj-label">${c.t}</span><span class="conj-arabic">${c.p}</span></div>`).join('')}</div>
+  ` : '';
+  const impHTML = f.imperfect ? `
+    <span class="label">Imperfect (present/future) tense</span>
+    <div class="conj-grid">${f.imperfect.map(c=>`<div class="conj-cell"><span class="conj-label">${c.t}</span><span class="conj-arabic">${c.p}</span></div>`).join('')}</div>
+  ` : '';
+
+  detail.innerHTML = `
+    <div class="form-detail-header">
+      <span class="form-detail-arabic">${f.arabic}</span>
+      <span class="form-detail-title">Form ${f.num} · ${f.pattern}</span>
+    </div>
+    <div class="form-detail-body">
+      <span class="label">Meaning</span>${f.meaning}
+      ${f.masdar && f.masdar !== '—' ? `<span class="label">Maṣdar (verbal noun)</span><span style="font-size:18px;direction:rtl;">${f.masdar}</span>` : ''}
+      <span class="label">How this form works</span>${f.detail}
+      ${perfHTML}${impHTML}
+    </div>
+  `;
+  detail.classList.add('visible');
+  setTimeout(() => detail.scrollIntoView({behavior:'smooth', block:'nearest'}), 50);
+}
+
+function selectDerived(i) {
+  const r = ROOTS.find(x => x.id === activeRoot);
+  const d = r.derived[i];
+  const detail = document.getElementById('derived-detail');
+
+  if (activeDerivedCard === i) {
+    activeDerivedCard = null;
+    detail.classList.remove('visible');
+    detail.innerHTML = '';
+    return;
+  }
+  activeDerivedCard = i;
+
+  detail.innerHTML = `
+    <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:10px; flex-wrap:wrap;">
+      <span style="font-size:28px; direction:rtl; color:var(--ink);">${d.arabic}</span>
+      <span style="font-family:monospace; font-size:13px; color:var(--rust);">${d.roman}</span>
+      <span class="type-badge ${d.badge}">${d.type === 'masdar' ? 'maṣdar' : d.type}</span>
+    </div>
+    <div style="font-size:13px; color:var(--ink); line-height:1.7;">
+      <strong>Meaning:</strong> ${d.meaning}<br>
+      <strong>Pattern:</strong> <span style="font-family:monospace; color:var(--rust);">${d.pattern}</span>
+    </div>
+  `;
+  detail.classList.add('visible');
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════════════════════════ */
+renderSidebar();
+renderMain();
+</script>
+</body>
+</html>

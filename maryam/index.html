@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Learn Arabic - Surah Maryam</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+
+  :root {
+    /* Elegant green-beige palette */
+    --bg-page-1: #F4EFE3;
+    --bg-page-2: #E7E4D3;
+    --bg-page-3: #C9D3B7;
+    --bg-page-4: #DCC9A8;
+
+    --surface-1: rgba(255, 253, 247, 0.50);
+    --surface-2: rgba(255, 253, 247, 0.72);
+    --surface-strong: rgba(255, 253, 247, 0.85);
+
+    --border: rgba(94, 108, 79, 0.18);
+    --border-strong: rgba(84, 99, 68, 0.34);
+    --border-accent: rgba(107, 138, 84, 0.5);
+    --radius: 16px;
+
+    --text-primary: #2B3624;
+    --text-secondary: #5A6752;
+    --text-muted: #8B9280;
+
+    --bg-accent: rgba(114, 143, 89, 0.16);
+    --text-accent: #46612F;
+
+    --bg-success: rgba(103, 140, 84, 0.18);
+    --text-success: #395A28;
+
+    --bg-warning: rgba(199, 165, 99, 0.24);
+    --text-warning: #8C6A26;
+
+    --bg-pro: rgba(88, 133, 120, 0.18);
+    --text-pro: #2F5C51;
+
+    --bg-danger: rgba(178, 106, 83, 0.18);
+    --text-danger: #8A4530;
+
+    --glass-shadow: 0 8px 28px rgba(58, 68, 45, 0.14), 0 1px 0 rgba(255,255,255,0.6) inset;
+    --glass-shadow-sm: 0 4px 14px rgba(58, 68, 45, 0.10), 0 1px 0 rgba(255,255,255,0.55) inset;
+
+    /* Sans-serif stack for all Latin text. Arabic keeps its own font (Amiri) elsewhere. */
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body, button, input, textarea {
+    font-family: var(--font-sans);
+  }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  /* ---- Liquid glass backdrop ---- */
+  body {
+    position: relative;
+    margin: 0;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  /* Fixed background lives on a pseudo-element, not body itself —
+     background-attachment:fixed is unreliable/janky on iOS Safari,
+     a position:fixed layer behind everything works everywhere. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(ellipse 900px 600px at 8% 0%, var(--bg-page-4) 0%, transparent 60%),
+      radial-gradient(ellipse 900px 700px at 100% 15%, var(--bg-page-3) 0%, transparent 55%),
+      radial-gradient(ellipse 800px 600px at 20% 100%, var(--bg-page-3) 0%, transparent 55%),
+      linear-gradient(160deg, var(--bg-page-1), var(--bg-page-2));
+  }
+
+  .maryam-explorer {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: clamp(14px, 3vw, 28px);
+    color: var(--text-primary);
+  }
+
+  /* ---- Header ---- */
+  .explorer-header { margin-bottom: 18px; padding: 0 2px; }
+  .explorer-title {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(19px, 4vw, 25px);
+    color: var(--text-primary);
+    margin: 2px 2px 2px 2px;
+    line-height: 1.5;
+    letter-spacing: 0.005em;
+  }
+  .explorer-subtitle {
+    font-family: var(--font-sans);
+    font-size: 12.5px;
+    font-style: italic;
+    color: var(--text-muted);
+    margin: 5px 0 0;
+    letter-spacing: 0.03em;
+  }
+
+  /* ---- Verse number picker ---- */
+  .verse-buttons-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+    padding: 10px;
+    border-radius: var(--radius);
+    background: var(--surface-1);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border: 0.5px solid var(--border);
+    box-shadow: var(--glass-shadow-sm);
+  }
+
+  .verse-btn {
+    cursor: pointer;
+    padding: 6px 12px;
+    border: 0.5px solid var(--border-strong);
+    border-radius: calc(var(--radius) - 6px);
+    background: var(--surface-2);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+    min-width: 44px;
+    min-height: 44px;
+    text-align: center;
+  }
+  .verse-btn:hover { background: var(--surface-strong); transform: translateY(-1px); box-shadow: var(--glass-shadow-sm); }
+  .verse-btn:active { transform: translateY(0); }
+  .verse-btn.active {
+    background: linear-gradient(180deg, rgba(160,185,130,0.42), rgba(114,143,89,0.28));
+    border-color: var(--border-accent);
+    color: var(--text-accent);
+    font-weight: 600;
+    box-shadow: var(--glass-shadow-sm);
+  }
+
+  /* ---- Glass panels ---- */
+  .glass-panel {
+    background: var(--surface-1);
+    backdrop-filter: blur(20px) saturate(170%);
+    -webkit-backdrop-filter: blur(20px) saturate(170%);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--glass-shadow);
+    position: relative;
+    overflow: hidden;
+  }
+  .glass-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.35), rgba(255,255,255,0) 40%);
+    pointer-events: none;
+  }
+
+  .verse-card { padding: 18px 20px; margin-bottom: 14px; }
+  .verse-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 6px; letter-spacing: 0.02em; }
+  .verse-transliteration { font-size: 12px; color: var(--text-secondary); margin-top: 8px; font-style: italic; }
+  .verse-translation { font-size: 12px; color: var(--text-primary); margin-top: 6px; line-height: 1.5; }
+
+  .verse-summary { font-size: 15px; font-weight: 600; color: var(--text-secondary); margin: 4px 2px 8px; }
+
+  .tag { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; margin: 2px 4px 2px 0; letter-spacing: 0.01em; }
+  .tag-verb { background: var(--bg-success); color: var(--text-success); }
+  .tag-noun { background: var(--bg-accent); color: var(--text-accent); }
+  .tag-particle { background: var(--bg-warning); color: var(--text-warning); }
+  .tag-structure { background: var(--bg-pro); color: var(--text-pro); }
+  .tag-rhyme { background: var(--bg-danger); color: var(--text-danger); }
+
+  .arabic-large { font-family: 'Amiri', serif; font-size: clamp(25px, 5vw, 25px); direction: rtl; text-align: right; line-height: 1.9; color: var(--text-primary); }
+
+  .analysis-block { padding: 14px 16px; margin-top: 10px; }
+  .grammar-item { display: flex; flex-direction: column; gap: 4px; padding: 10px 0; border-bottom: 0.5px solid var(--border); }
+  .grammar-item:last-child { border-bottom: none; }
+  .grammar-word { font-family: 'Amiri', serif; font-size: 25px; direction: rtl; text-align: right; color: var(--text-primary); }
+  .grammar-detail { font-size: 12px; color: var(--text-secondary); line-height: 1.55; }
+
+  .highlight-card { padding: 12px 16px; margin-top: 12px; background: linear-gradient(135deg, rgba(160,185,130,0.22), rgba(114,143,89,0.12)); border-color: var(--border-accent); }
+  .highlight-label { font-size: 12px; font-weight: 700; color: var(--text-accent); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .highlight-text { font-size: 12px; color: var(--text-primary); line-height: 1.55; }
+
+  /* ---- Root links (connects to the Root Explorer page) ---- */
+  .root-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 1px 8px;
+    margin: 0 1px;
+    border-radius: 20px;
+    background: var(--bg-success);
+    color: var(--text-success);
+    font-family: 'Amiri', serif;
+    font-size: 13px;
+    text-decoration: none;
+    border: 0.5px solid rgba(103, 140, 84, 0.4);
+    white-space: nowrap;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .root-link:hover { background: rgba(103, 140, 84, 0.32); transform: translateY(-1px); }
+  .root-link::after { content: '↗'; font-family: var(--font-sans); font-size: 10px; }
+
+  /* ---- Navigation ---- */
+  .nav-row { display: flex; gap: 8px; margin-top: 16px; justify-content: space-between; }
+  .nav-btn {
+    cursor: pointer;
+    flex: 1;
+    padding: 10px 12px;
+    border: 0.5px solid var(--border-strong);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    box-shadow: var(--glass-shadow-sm);
+    transition: background 0.18s ease, transform 0.18s ease;
+    min-height: 44px;
+  }
+  .nav-btn:hover { background: var(--surface-strong); transform: translateY(-1px); }
+  .nav-btn:active { transform: translateY(0); }
+
+  @media (max-width: 600px) {
+    .nav-row { flex-wrap: wrap; }
+    .nav-btn { flex: 1 1 100%; }
+    .verse-card, .analysis-block, .highlight-card { padding: 14px; }
+    .grammar-word { font-size: 25px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .verse-btn, .nav-btn { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="maryam-explorer">
+  <div class="explorer-header">
+    <h2 class="explorer-title">Learn Arabic - Surah Maryam</h2>
+    <p class="explorer-subtitle">Verse 1 – 15</p>
+  </div>
+
+  <div class="verse-buttons-row" id="verse-buttons"></div>
+
+  <div id="verse-display"></div>
+
+  <div class="nav-row">
+    <button class="nav-btn" onclick="navigate(-1)">← Previous verse</button>
+    <button class="nav-btn" onclick="sendPrompt('Give me a deeper grammatical analysis of verse ' + currentVerse + ' of Surah Maryam')">Deep-dive this verse ↗</button>
+    <button class="nav-btn" onclick="navigate(1)">Next verse →</button>
+  </div>
+</div>
+
+<script src="data/verses.js"></script>
+<script>
+let currentVerse = 1;
+
+/* ═══════════════════════════════════════════════════════════════
+   ROOT LINKING — connects this page to maryam_root_explorer.html
+   Any of these exact Arabic root strings, wherever they appear inside
+   a verse's analysis text, get turned into a clickable chip that opens
+   the Root Explorer already scrolled to that root's detail page.
+   Only roots that actually have a detail page in the Root Explorer
+   are listed here — add a line here whenever you add a new root there.
+═══════════════════════════════════════════════════════════════ */
+const ROOT_EXPLORER_URL = 'maryam_root_explorer.html'; // update this if you deploy it under a different name/path
+const ROOT_LINKS = {
+  'ر-ب-ب': 'rbb',
+  'ر-ح-م': 'rhm',
+  'ق-و-ل': 'qwl',
+  'و-ل-د': 'wld',
+  'ح-ي-ي': 'hyy',
+  'س-ل-م': 'slm'
+};
+
+function linkifyRoots(text) {
+  let out = text;
+  for (const [pattern, id] of Object.entries(ROOT_LINKS)) {
+    out = out.split(pattern).join(
+      `<a class="root-link" href="${ROOT_EXPLORER_URL}?root=${id}" target="_blank" rel="noopener">${pattern}</a>`
+    );
+  }
+  return out;
+}
+
+// verses data now loaded from data/verses.js (see <script> tag in <head>)
+
+
+function renderVerse(n) {
+  currentVerse = n;
+  document.querySelectorAll('.verse-btn').forEach(b => {
+    b.classList.toggle('active', parseInt(b.dataset.v) === n);
+  });
+  const v = verses[n];
+  const tagHtml = v.tagLabels.map((lbl, i) => {
+    const cls = ['tag-verb','tag-noun','tag-particle','tag-structure','tag-rhyme'][i % 5];
+    return `<span class="tag ${cls}">${lbl}</span>`;
+  }).join('');
+
+  document.getElementById('verse-display').innerHTML = `
+    <div class="glass-panel verse-card">
+      <div class="verse-meta">Verse ${n} of 15</div>
+      <div class="arabic-large">${v.arabic}</div>
+      <div class="verse-transliteration">${v.transliteration}</div>
+      <div class="verse-translation">${v.translation}</div>
+      <div style="margin-top:8px;">${tagHtml}</div>
+    </div>
+    <div class="verse-summary">${v.summary}</div>
+    <div class="glass-panel analysis-block">
+      ${v.analysis.map(a => `
+        <div class="grammar-item">
+          <div class="grammar-word">${a.word}</div>
+          <div class="grammar-detail">${linkifyRoots(a.detail)}</div>
+        </div>
+      `).join('')}
+    </div>
+    <div class="glass-panel highlight-card">
+      <div class="highlight-label">Key grammatical insight</div>
+      <div class="highlight-text">${linkifyRoots(v.highlight)}</div>
+    </div>
+  `;
+}
+
+function navigate(dir) {
+  const next = Math.max(1, Math.min(15, currentVerse + dir));
+  renderVerse(next);
+}
+
+const btns = document.getElementById('verse-buttons');
+for (let i = 1; i <= 15; i++) {
+  const b = document.createElement('button');
+  b.className = 'verse-btn';
+  b.dataset.v = i;
+  b.textContent = i;
+  b.onclick = () => renderVerse(i);
+  btns.appendChild(b);
+}
+renderVerse(1);
+</script>
+
+</body>
+</html>
