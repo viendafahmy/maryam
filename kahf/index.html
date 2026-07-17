@@ -84,6 +84,19 @@
     color: var(--text-primary);
   }
 
+  /* ---- Home navigation ---- */
+  .home-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color 0.15s ease;
+  }
+  .home-link:hover { color: var(--text-accent); }
+
   /* ---- Header ---- */
   .explorer-header { margin-bottom: 18px; padding: 0 2px; }
   .explorer-title {
@@ -264,6 +277,7 @@
 <body>
 
 <div class="kahf-explorer">
+  <a class="home-link" href="../index.html">← All Passages</a>
   <div class="explorer-header">
     <h2 class="explorer-title">Learn Arabic — Surah Al-Kahf</h2>
     <p class="explorer-subtitle">The Story of Mūsā and al-Khiḍr</p>
@@ -285,19 +299,32 @@
 /* ─────────────────────────────────────────────────────────────
    ROOT LINKS — connects to kahf_root_explorer.html
    Add a line here whenever you add a new root to roots.js.
+
+   IMPORTANT: the key here must match the root EXACTLY as it appears
+   in verses.js's detail/highlight text — including spacing. The verse
+   text uses the no-space form (e.g. 'ص-ب-ر'), so the keys below must
+   too. The spaced form ('ص - ب - ر') is only used for on-page DISPLAY
+   in roots.js's `letters` field — don't copy that format in here.
 ───────────────────────────────────────────────────────────── */
 const ROOT_EXPLORER_URL = 'kahf_root_explorer.html';
 const ROOT_LINKS = {
-  'ص - ب - ر': 'sbr',
-  'ع - ل - م': 'ʿlm',
-  'ر - و - د': 'rwd',
-  'ق - ص - ص': 'qṣṣ',
-  'أ - و - ل': 'ʾwl',
-  'خ - ش - ي': 'khshy',
-  // Shared roots with Maryam explorer — link there instead:
-  'ر - ح - م': '../maryam_root_explorer.html?root=rhm',
-  'س - ل - م': '../maryam_root_explorer.html?root=slm',
-  'ع - ب - د': '../maryam_root_explorer.html?root=ʿbd',
+  'ص-ب-ر': 'sbr',
+  'ع-ل-م': 'ʿlm',
+  'ر-و-د': 'rwd',
+  'ق-ص-ص': 'qṣṣ',
+  'أ-و-ل': 'ʾwl',
+  'خ-ش-ي': 'khshy',
+  // Shared roots with Maryam explorer — link there instead.
+  // Path must include the /maryam/ folder segment: this file lives at
+  // kahf/index.html, and the target lives at maryam/maryam_root_explorer.html —
+  // '../' alone only gets you back to the repo root, not into maryam/.
+  'ر-ح-م': '../maryam/maryam_root_explorer.html?root=rhm',
+  'س-ل-م': '../maryam/maryam_root_explorer.html?root=slm',
+  // 'ع-ب-د' is intentionally NOT linked yet: there is no id:'ʿbd' entry
+  // in maryam/data/roots.js. Linking to a root that doesn't exist would
+  // silently fall back to Maryam's default root (rbb) instead of erroring —
+  // a misleading dead end. Add the ʿbd root to maryam/data/roots.js first,
+  // then add 'ع-ب-د': '../maryam/maryam_root_explorer.html?root=ʿbd' here.
 };
 
 function linkifyRoots(text) {

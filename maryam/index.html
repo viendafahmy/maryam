@@ -89,6 +89,19 @@
     color: var(--text-primary);
   }
 
+  /* ---- Home navigation ---- */
+  .home-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color 0.15s ease;
+  }
+  .home-link:hover { color: var(--text-accent); }
+
   /* ---- Header ---- */
   .explorer-header { margin-bottom: 18px; padding: 0 2px; }
   .explorer-title {
@@ -249,6 +262,7 @@
 <body>
 
 <div class="maryam-explorer">
+  <a class="home-link" href="../index.html">← All Passages</a>
   <div class="explorer-header">
     <h2 class="explorer-title">Learn Arabic - Surah Maryam</h2>
     <p class="explorer-subtitle">Verse 1 – 15</p>

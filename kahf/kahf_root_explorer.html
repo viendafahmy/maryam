@@ -88,6 +88,13 @@
     margin-top: 2px;
   }
 
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
   .header-back {
     font-size: 11px;
     font-family: monospace;
@@ -783,7 +790,10 @@
     <span class="en">Quranic Root Explorer</span>
     <span class="ar">مستكشف جذور القرآن</span>
   </div>
-  <a class="header-back" href="index.html">← Back to Grammar Explorer</a>
+  <div class="header-nav">
+    <a class="header-back" href="../index.html">← All Passages</a>
+    <a class="header-back" href="index.html">Grammar Explorer</a>
+  </div>
   <div class="header-meta">
     Surah Al-Kahf · 18<br>
     <span style="color:#7A8C9A">Roots from vv. 60–82</span>
