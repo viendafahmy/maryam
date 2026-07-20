@@ -195,5 +195,92 @@ if (typeof window.ROOTS === 'undefined') { window.ROOTS = [
     occurrences: [
       { ref: '2:51', arabic: 'وَإِذْ <span class="occurrence-highlight">وَاعَدْنَا</span> مُوسَىٰ أَرْبَعِينَ لَيْلَةً', trans: 'And when We <b>appointed</b> forty nights for Moses', note: 'وَاعَدْنَا: Form III perfect, 1st person plural — the reciprocal form marking an agreed appointment, not a unilateral demand.' },
     ]
+  },
+
+  {
+    id: 'bqr',
+    arabic: 'بقر',
+    letters: 'ب - ق - ر',
+    roman: 'b-q-r',
+    meaning: 'cow, cattle',
+    semantic: 'The root that names this surah. Baqara (a single cow) and baqar (cattle collectively) describe the animal at the center of the vv.67-71 narrative, a story so central the entire 286-verse surah is named after it.',
+    quranCount: '10',
+    baqarahCount: 5,
+    memoryAid: 'Track the definiteness across vv.67-71: بَقَرَةً (v.67, indefinite, a cow, any cow) becomes increasingly specified through three rounds of questions (age, color, character) until it is functionally definite, though the grammar itself never adds the definite article. The people, not the grammar, narrow the reference through their questions.',
+    forms: [
+      { num: 'I', arabic: '—', roman: '—', pattern: '—', meaning: 'No common verb form', masdar: '—', attested: false,
+        detail: 'This root functions almost exclusively as a noun in Qurʾānic Arabic, with no productive verb form in regular use — unlike most roots covered so far, بقر does not supply a family of derived verb forms.' }
+    ],
+    derived: [
+      { arabic: 'بَقَرَة', roman: 'baqara', meaning: 'a cow (singular)', pattern: 'faʿala — singular noun (ism al-waḥda)', type: 'noun', badge: 'badge-noun' },
+      { arabic: 'بَقَر', roman: 'baqar', meaning: 'cattle, cows (collective)', pattern: 'faʿal — collective noun', type: 'noun', badge: 'badge-noun' },
+      { arabic: 'الْبَقَرَة', roman: 'al-Baqara', meaning: 'The Cow (the name of this surah)', pattern: 'definite article + noun', type: 'noun', badge: 'badge-divine' },
+    ],
+    occurrences: [
+      { ref: '2:67', arabic: 'أَن تَذْبَحُوا <span class="occurrence-highlight">بَقَرَةً</span>', trans: 'That you slaughter a <b>cow</b>', note: 'بَقَرَةً: indefinite, manṣūb, direct object — the word that gives the surah its name, introduced here for the first time.' },
+      { ref: '2:68', arabic: 'إِنَّهَا <span class="occurrence-highlight">بَقَرَةٌ</span> لَّا فَارِضٌ وَلَا بِكْرٌ', trans: 'It is a <b>cow</b> neither old nor young', note: 'بَقَرَةٌ: predicate, marfūʿ, still indefinite despite the specificity being requested.' },
+      { ref: '2:70', arabic: 'إِنَّ <span class="occurrence-highlight">الْبَقَرَ</span> تَشَابَهَ عَلَيْنَا', trans: 'Indeed all <b>cattle</b> look alike to us', note: 'الْبَقَرَ: the collective form with the definite article — "cattle in general," distinct from the singular بَقَرَة used throughout the rest of the exchange.' },
+    ]
+  },
+
+  {
+    id: 'hdy',
+    arabic: 'هدي',
+    letters: 'ه - د - ي',
+    roman: 'h-d-y',
+    meaning: 'to guide',
+    semantic: 'Guidance as active leading toward a destination, not passive information — the root behind hidāya (guidance) and the daily prayer request ihdinā l-ṣirāṭa l-mustaqīm, guide us to the straight path.',
+    quranCount: '316',
+    baqarahCount: 2,
+    memoryAid: 'تَهْتَدُونَ (v.53, guided by the Furqān) and لَمُهْتَدُونَ (v.70, closing the cow narrative in hope) both use Form VIII — the reflexive sense of actively finding/taking ones way through guidance already given, not merely receiving it passively.',
+    forms: [
+      { num: 'I', arabic: 'هَدَى', roman: 'hadā', pattern: 'faʿala (weak)', meaning: 'to guide', masdar: 'هُدًى / هِدَايَة', attested: true,
+        detail: 'Form I: the base transitive sense, "he guided [someone]." هُدًى (hudan) is one of the Qurʾans most frequent terms for divine guidance itself.',
+        perfect: [{p:'هَدَى',t:'he guided'},{p:'هَدَيْنَا',t:'We guided'}],
+        imperfect: [{p:'يَهْدِي',t:'he guides'}]
+      },
+      { num: 'VIII', arabic: 'اهْتَدَى', roman: 'ihtadā', pattern: 'iftaʿala (weak)', meaning: 'to be guided, to find ones way', masdar: 'اهْتِدَاء', attested: true,
+        detail: 'Form VIII: reflexive-middle sense, the guided party actively taking up the path shown to them rather than remaining a passive recipient. تَهْتَدُونَ (v.53) and مُهْتَدُونَ (v.70, active participle) both use this form.' }
+    ],
+    derived: [
+      { arabic: 'هُدًى', roman: 'hudan', meaning: 'guidance', pattern: 'faʿal — verbal noun', type: 'masdar', badge: 'badge-masdar' },
+      { arabic: 'هَادٍ', roman: 'hādin', meaning: 'guide, one who guides', pattern: 'fāʿil — active participle', type: 'part', badge: 'badge-part' },
+      { arabic: 'مُهْتَدٍ', roman: 'muhtadin', meaning: 'one who is [rightly] guided', pattern: 'Form VIII active participle', type: 'part', badge: 'badge-part' },
+      { arabic: 'مُهْتَدُونَ', roman: 'muhtadūn', meaning: 'the guided ones (plural)', pattern: 'Form VIII active participle, plural', type: 'part', badge: 'badge-part' },
+    ],
+    occurrences: [
+      { ref: '2:53', arabic: 'الْكِتَابَ وَالْفُرْقَانَ لَعَلَّكُمْ <span class="occurrence-highlight">تَهْتَدُونَ</span>', trans: 'The Scripture and the Criterion, so perhaps you would be <b>guided</b>', note: 'تَهْتَدُونَ: Form VIII imperfect, 2nd person plural, the goal of receiving the Kitāb and Furqān.' },
+      { ref: '2:70', arabic: 'وَإِنَّا إِن شَاءَ اللَّهُ <span class="occurrence-highlight">لَمُهْتَدُونَ</span>', trans: 'And indeed we, if God wills, will be <b>guided</b>', note: 'لَمُهْتَدُونَ: emphatic لَـ + Form VIII active participle plural, closing the cow narrative on a note of hope.' },
+    ]
+  },
+
+  {
+    id: 'wthq',
+    arabic: 'وثق',
+    letters: 'و - ث - ق',
+    roman: 'w-th-q',
+    meaning: 'to bind firmly, to trust',
+    semantic: 'A near-synonym of عهد (covenant), but where ʿahd stresses mutual agreement, wathaqa stresses the firmness and reliability of the bond itself — the root behind mīthāq, a solemn, tightly-bound covenant.',
+    quranCount: '36',
+    baqarahCount: 1,
+    memoryAid: 'مِيثَاقَكُمْ (v.63) names the same covenant event that عَهْدِي named back in v.40, but through a different root, one emphasizing firmness/tightness (و-ث-ق, related to trust and reliability) rather than mutual agreement (ع-ه-د). Two roots, two shades of the same covenant idea.',
+    forms: [
+      { num: 'I', arabic: 'وَثِقَ', roman: 'wathiqa', pattern: 'faʿila', meaning: 'to trust, to rely on', masdar: 'ثِقَة', attested: true,
+        detail: 'Form I: to place ones trust/confidence in something firm and reliable. ثِقَة (thiqa, trust/reliability) is the standard word in later Arabic (including hadith science) for a trustworthy narrator.',
+        perfect: [{p:'وَثِقَ',t:'he trusted'}],
+        imperfect: [{p:'يَثِقُ',t:'he trusts'}]
+      },
+      { num: 'IV', arabic: 'أَوْثَقَ', roman: 'awthaqa', pattern: 'afʿala', meaning: 'to bind firmly, to tie securely', masdar: 'إِيثَاق', attested: true,
+        detail: 'Form IV: causative, "to make firmly bound" — used elsewhere in the Qurʾān for physically tying/binding, extending the abstract sense of a firm covenant to concrete physical securing.' }
+    ],
+    derived: [
+      { arabic: 'مِيثَاق', roman: 'mīthāq', meaning: 'solemn covenant, firm pledge', pattern: 'mifʿāl — noun of instrument/instance', type: 'noun', badge: 'badge-noun' },
+      { arabic: 'ثِقَة', roman: 'thiqa', meaning: 'trust, reliability', pattern: 'fiʿla — verbal noun', type: 'masdar', badge: 'badge-masdar' },
+      { arabic: 'وَثِيق', roman: 'wathīq', meaning: 'firm, secure', pattern: 'faʿīl — adjective', type: 'adj', badge: 'badge-adj' },
+      { arabic: 'مَوْثِق', roman: 'mawthiq', meaning: 'a firm bond/pledge', pattern: 'mafʿil — noun of place/instance', type: 'noun', badge: 'badge-noun' },
+    ],
+    occurrences: [
+      { ref: '2:63', arabic: 'وَإِذْ أَخَذْنَا <span class="occurrence-highlight">مِيثَاقَكُمْ</span> وَرَفَعْنَا فَوْقَكُمُ الطُّورَ', trans: 'And when We took your <b>covenant</b> and raised the mount over you', note: 'مِيثَاقَكُمْ: manṣūb, direct object of أَخَذْنَا — a firm, solemn pledge, distinct in root from عَهْدِي in v.40 though overlapping in referent.' },
+    ]
   }
 ] }

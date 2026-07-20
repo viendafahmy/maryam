@@ -305,6 +305,146 @@ if (typeof window.verses === 'undefined') { window.verses = {
       { word: 'وَلَا تَعْثَوْا فِي الْأَرْضِ مُفْسِدِينَ', detail: 'لَا تَعْثَوْا: Form I jussive (negated), root ع-ث-و (to act wickedly/wreak havoc), plural. مُفْسِدِينَ: active participle plural, manṣūb, ḥāl — from root ف-س-د (to corrupt, the same root behind يَفْسُقُونَ\'s neighbor concept in v.59 though a distinct root) — "as corruptors," specifying the *manner* of the prohibited wickedness rather than adding a separate prohibition.' }
     ],
     highlight: 'انفَجَرَتْ (Form VII, root ف-ج-ر) is grammatically agentless by design — Form VII marks the springs as bursting forth spontaneously from the struck stone, with the miracle\'s cause (the strike) and its effect (the gushing) linked by فَـ but kept grammatically distinct: a human strikes, but no human is said to make the water burst.'
+  },
+  61: {
+    arabic: 'وَإِذْ قُلْتُمْ يَا مُوسَىٰ لَن نَّصْبِرَ عَلَىٰ طَعَامٍ وَاحِدٍ فَادْعُ لَنَا رَبَّكَ يُخْرِجْ لَنَا مِمَّا تُنبِتُ الْأَرْضُ مِن بَقْلِهَا وَقِثَّائِهَا وَفُومِهَا وَعَدَسِهَا وَبَصَلِهَا ۖ قَالَ أَتَسْتَبْدِلُونَ الَّذِي هُوَ أَدْنَىٰ بِالَّذِي هُوَ خَيْرٌ ۚ اهْبِطُوا مِصْرًا فَإِنَّ لَكُم مَّا سَأَلْتُمْ ۗ وَضُرِبَتْ عَلَيْهِمُ الذِّلَّةُ وَالْمَسْكَنَةُ وَبَاءُوا بِغَضَبٍ مِّنَ اللَّهِ ۗ ذَٰلِكَ بِأَنَّهُمْ كَانُوا يَكْفُرُونَ بِآيَاتِ اللَّهِ وَيَقْتُلُونَ النَّبِيِّينَ بِغَيْرِ الْحَقِّ ۗ ذَٰلِكَ بِمَا عَصَوا وَّكَانُوا يَعْتَدُونَ',
+    transliteration: 'wa-idh qultum yā mūsā lan naṣbira ʿalā ṭaʿāmin wāḥidin fa-dʿu lanā rabbaka yukhrij lanā mimmā tunbitu l-arḍu min baqlihā wa-qiththāʾihā wa-fūmihā wa-ʿadasihā wa-baṣalihā qāla atastabdilūna lladhī huwa adnā bi-lladhī huwa khayrun ihbiṭū miṣran fa-inna lakum mā saʾaltum wa-ḍuribat ʿalayhimu l-dhillatu wa-l-maskanatu wa-bāʾū bi-ghaḍabin mina llāhi dhālika bi-annahum kānū yakfurūna bi-āyāti llāhi wa-yaqtulūna l-nabiyyīna bi-ghayri l-ḥaqqi dhālika bimā ʿaṣaw wa-kānū yaʿtadūna',
+    translation: 'And when you said, O Moses, we will not endure one kind of food, so call upon your Lord to bring forth for us what the earth grows of its herbs and cucumbers and garlic and lentils and onions. He said, Would you exchange what is better for what is lesser? Go down to a city, for you shall have what you asked. And they were struck with humiliation and misery and returned with anger from God, because they used to disbelieve in the signs of God and kill the prophets without right, because they disobeyed and used to transgress',
+    tags: ['verb', 'structure'],
+    tagLabels: ['Form X أَتَسْتَبْدِلُونَ', 'Passive وَضُرِبَتْ', 'Causal بِأَنَّهُمْ / بِمَا'],
+    summary: 'The demand for variety in food, and a long causal chain explaining the resulting disgrace',
+    analysis: [
+      { word: 'لَن نَّصْبِرَ عَلَىٰ طَعَامٍ وَاحِدٍ', detail: 'لَن: emphatic future negation, governing the subjunctive. نَّصْبِرَ: Form I subjunctive, root ص-ب-ر (the same root anchoring patience in Baqarah v.45 and the Kahf root explorer), 1st person plural — the people declare they will not endure a single, monotonous food, the very opposite of the patience commanded earlier in this surah.' },
+      { word: 'أَتَسْتَبْدِلُونَ الَّذِي هُوَ أَدْنَىٰ بِالَّذِي هُوَ خَيْرٌ', detail: 'أَتَسْتَبْدِلُونَ: interrogative hamza + Form X imperfect, root ب-د-ل (to exchange), 2nd person plural — Form X carries a deliberate, sought-after sense: "are you seeking to exchange for yourselves." أَدْنَىٰ: elative (comparative pattern afʿal), from root د-ن-و, "lesser/lower." خَيْرٌ: elative from a different, irregular root (خ-ي-ر), "better" — the verse pairs two elatives on opposite ends of a value judgment.' },
+      { word: 'وَضُرِبَتْ عَلَيْهِمُ الذِّلَّةُ وَالْمَسْكَنَةُ', detail: 'ضُرِبَتْ: Form I passive perfect, root ض-ر-ب (to strike — the same root used literally for striking the stone in v.60, here used metaphorically), feminine, agreeing with الذِّلَّةُ. The passive removes any named agent, presenting humiliation and misery as an imposed, encompassing condition rather than a specific act by a specific party.' },
+      { word: 'ذَٰلِكَ بِأَنَّهُمْ كَانُوا يَكْفُرُونَ ... ذَٰلِكَ بِمَا عَصَوا', detail: 'Two parallel causal clauses, each beginning ذَٰلِكَ ("that is because") followed by a causal preposition (بِـ) governing either أَنَّ + a noun clause or مَا + a verb. كَانُوا يَكْفُرُونَ: the same كَانَ + imperfect habitual-past pattern seen already in vv.57 and 59, describing persistent disbelief, not a single lapse. عَصَوا: Form I perfect, root ع-ص-ي (to disobey — the same root behind عَصِيًّا in Sūrat Maryam v.14), 3rd person plural.' }
+    ],
+    highlight: 'Two consecutive ذَٰلِكَ بِـ causal clauses stack up the reasons for the disgrace, disbelief and killing prophets, then disobedience and transgression, a grammatical accumulation that mirrors the accumulation of offenses being described.'
+  },
+  62: {
+    arabic: 'إِنَّ الَّذِينَ آمَنُوا وَالَّذِينَ هَادُوا وَالنَّصَارَىٰ وَالصَّابِئِينَ مَنْ آمَنَ بِاللَّهِ وَالْيَوْمِ الْآخِرِ وَعَمِلَ صَالِحًا فَلَهُمْ أَجْرُهُمْ عِندَ رَبِّهِمْ وَلَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ',
+    transliteration: 'inna lladhīna āmanū wa-lladhīna hādū wa-l-naṣārā wa-l-ṣābiʾīna man āmana bi-llāhi wa-l-yawmi l-ākhiri wa-ʿamila ṣāliḥan fa-lahum ajruhum ʿinda rabbihim wa-lā khawfun ʿalayhim wa-lā hum yaḥzanūna',
+    translation: 'Indeed, those who believed and those who were Jewish and the Christians and the Sabians, whoever believed in God and the Last Day and did righteousness, for them is their reward with their Lord, and no fear will there be upon them, nor will they grieve',
+    tags: ['structure', 'noun'],
+    tagLabels: ['إِنَّ + multiple subjects', 'Conditional-like مَنْ clause', 'Double negation لَا...وَلَا'],
+    summary: 'A universal criterion for reward, stated as a general principle',
+    analysis: [
+      { word: 'إِنَّ الَّذِينَ آمَنُوا وَالَّذِينَ هَادُوا وَالنَّصَارَىٰ وَالصَّابِئِينَ', detail: 'إِنَّ governs four coordinated groups in accusative, though only the first (الَّذِينَ) shows the case audibly since relative pronouns and the proper nouns here do not visibly decline: those who believed (generic reference, likely the Muslim community), the Jews (root ه-و-د), the Christians (النَّصَارَىٰ), and the Sabians (a smaller religious community mentioned three times in the Qurʾān).' },
+      { word: 'مَنْ آمَنَ بِاللَّهِ وَالْيَوْمِ الْآخِرِ وَعَمِلَ صَالِحًا', detail: 'مَنْ: conditional/generic relative pronoun, "whoever" — grammatically restarting the sentence as the true subject of the reward clause, effectively narrowing the four named groups down to a shared condition applying across all of them. آمَنَ: Form IV perfect, root أ-م-ن. عَمِلَ صَالِحًا: Form I perfect + accusative object/adjective, root ع-م-ل + ص-ل-ح — "did righteousness."' },
+      { word: 'فَلَهُمْ أَجْرُهُمْ عِندَ رَبِّهِمْ', detail: 'فَـ: introduces the result of the مَنْ-clause, functioning like the answer to a conditional. أَجْرُهُمْ: subject of a nominal sentence, marfūʿ, "their reward" — from root أ-ج-ر.' },
+      { word: 'وَلَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ', detail: 'A twinned negation: لَا خَوْفٌ (a negated nominal sentence, "no fear") followed by وَلَا هُمْ يَحْزَنُونَ (a negated verbal sentence with a fronted pronoun, "nor will they grieve"). The shift from nominal to verbal negation across the pair is a common Qurʾānic rhetorical variation, avoiding flat repetition of structure while doubling the reassurance.' }
+    ],
+    highlight: 'لَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ pairs a nominal negation with a verbal one, grammatically two different sentence types used back to back for the same reassurance, a stylistic variation rather than a change in meaning.'
+  },
+  63: {
+    arabic: 'وَإِذْ أَخَذْنَا مِيثَاقَكُمْ وَرَفَعْنَا فَوْقَكُمُ الطُّورَ خُذُوا مَا آتَيْنَاكُم بِقُوَّةٍ وَاذْكُرُوا مَا فِيهِ لَعَلَّكُمْ تَتَّقُونَ',
+    transliteration: 'wa-idh akhadhnā mīthāqakum wa-rafaʿnā fawqakumu l-ṭūra khudhū mā ātaynākum bi-quwwatin wa-dhkurū mā fīhi laʿallakum tattaqūna',
+    translation: 'And when We took your covenant and raised over you the mount, saying, take what We have given you with determination and remember what is in it, so perhaps you would become righteous',
+    tags: ['verb', 'noun'],
+    tagLabels: ['Form I أَخَذْنَا مِيثَاقَكُمْ', 'Imperative خُذُوا (echoes v.60 اضْرِب)'],
+    summary: 'The covenant taken at the mount, and the command to hold it firmly',
+    analysis: [
+      { word: 'أَخَذْنَا مِيثَاقَكُمْ', detail: 'أَخَذْنَا: Form I perfect, root أ-خ-ذ (to take, already seen in v.51 اتَّخَذْتُمُ and v.55 أَخَذَتْكُمُ), 1st person plural, "We took." مِيثَاقَكُمْ: direct object, from root و-ث-ق (to bind/tie firmly), a near-synonym of عَهْد (v.40) but etymologically emphasizing the firmness of the binding rather than the mutual agreement itself.' },
+      { word: 'وَرَفَعْنَا فَوْقَكُمُ الطُّورَ', detail: 'رَفَعْنَا: Form I perfect, root ر-ف-ع (to raise), 1st person plural. فَوْقَكُمُ: "above you." الطُّورَ: "the mount" (Sinai), most exegetes read this as a dramatic, awe-inducing backdrop to the covenant, the mountain suspended above the people as they accepted its terms.' },
+      { word: 'خُذُوا مَا آتَيْنَاكُم بِقُوَّةٍ', detail: 'خُذُوا: Form I imperative, same root أ-خ-ذ as أَخَذْنَا earlier in the verse, now addressed to the people themselves, "take it for yourselves." بِقُوَّةٍ: "with strength/determination," the identical phrase used for Yaḥyā in Sūrat Maryam v.12 (خُذِ الْكِتَابَ بِقُوَّةٍ), a deliberate Qurʾānic formula for receiving revealed guidance with full commitment.' }
+    ],
+    highlight: 'خُذُوا مَا آتَيْنَاكُم بِقُوَّةٍ echoes خُذِ الْكِتَابَ بِقُوَّةٍ addressed to Yaḥyā in Maryam v.12 almost word for word, the same command (root أ-خ-ذ, take with strength) applied to two different scriptures, showing this phrase as a fixed Qurʾānic formula for committed reception of guidance.'
+  },
+  64: {
+    arabic: 'ثُمَّ تَوَلَّيْتُم مِّن بَعْدِ ذَٰلِكَ ۖ فَلَوْلَا فَضْلُ اللَّهِ عَلَيْكُمْ وَرَحْمَتُهُ لَكُنتُم مِّنَ الْخَاسِرِينَ',
+    transliteration: 'thumma tawallaytum min baʿdi dhālika fa-lawlā faḍlu llāhi ʿalaykum wa-raḥmatuhu la-kuntum mina l-khāsirīna',
+    translation: 'Then you turned away after that, and if not for the favor of God upon you and His mercy, you would have been among the losers',
+    tags: ['verb', 'particle'],
+    tagLabels: ['Form V تَوَلَّيْتُم', 'لَوْلَا (counterfactual) + لَـ response'],
+    summary: 'A turning-away, saved only by unearned mercy',
+    analysis: [
+      { word: 'تَوَلَّيْتُم', detail: 'Form V perfect, root و-ل-ي (to be near/to turn, related to الْمَوَالِيَ, the heirs, in Maryam v.5), 2nd person plural, "you turned away." Form V here carries a reflexive-departure sense: turning oneself away from a commitment just accepted.' },
+      { word: 'فَلَوْلَا فَضْلُ اللَّهِ عَلَيْكُمْ وَرَحْمَتُهُ', detail: 'لَوْلَا: counterfactual conditional particle, "were it not for," followed by a nominal subject rather than a verb (فَضْلُ اللَّهِ, marfūʿ, mubtadaʾ), a distinct grammatical pattern from the verbal-conditional لَوْ. وَرَحْمَتُهُ: coordinated second subject, "and His mercy," the same root ر-ح-م anchoring the divine-mercy root entry already covered in the Maryam Root Explorer.' },
+      { word: 'لَكُنتُم مِّنَ الْخَاسِرِينَ', detail: 'لَـ: the response-particle required after لَوْلَا, marking the apodosis of a counterfactual, "you would certainly have been." كُنتُم: perfect of كَانَ. الْخَاسِرِينَ: majrūr after مِنَ, active participle plural from root خ-س-ر (to lose), "the losers."' }
+    ],
+    highlight: 'لَوْلَا ... لَـ is the grammar of counterfactual near-miss: لَوْلَا introduces what did not happen (mercy withheld), and the لَـ-prefixed verb states what would have followed. Recognizing this pair is essential for reading the many were-it-not-for warnings across the Qurʾān.'
+  },
+  65: {
+    arabic: 'وَلَقَدْ عَلِمْتُمُ الَّذِينَ اعْتَدَوْا مِنكُمْ فِي السَّبْتِ فَقُلْنَا لَهُمْ كُونُوا قِرَدَةً خَاسِئِينَ',
+    transliteration: 'wa-laqad ʿalimtumu lladhīna ʿtadaw minkum fī l-sabti fa-qulnā lahum kūnū qiradatan khāsiʾīna',
+    translation: 'And you had certainly known those among you who transgressed in the matter of the sabbath, and We said to them, be apes, despised',
+    tags: ['verb', 'particle'],
+    tagLabels: ['لَقَدْ emphatic past', 'كَانَ imperative + predicate'],
+    summary: 'The transgression of the sabbath, and its stark consequence',
+    analysis: [
+      { word: 'وَلَقَدْ عَلِمْتُمُ', detail: 'لَقَدْ: لَـ (emphatic) + قَدْ (particle of realized completion), together intensifying a perfect verb, "you certainly already knew." عَلِمْتُمُ: Form I perfect, root ع-ل-م (the same root behind the ʿlm entry in the Kahf Root Explorer), 2nd person plural.' },
+      { word: 'الَّذِينَ اعْتَدَوْا مِنكُمْ فِي السَّبْتِ', detail: 'اعْتَدَوْا: Form VIII perfect, root ع-د-و (to transgress a limit, related to عَدُوّ, enemy, and to يَعْتَدُونَ in v.61), 3rd person plural, "those who transgressed." Form VIII\047s reflexive sense marks this as active, self-directed overstepping of a set boundary, here the sabbath restrictions.' },
+      { word: 'كُونُوا قِرَدَةً خَاسِئِينَ', detail: 'كُونُوا: imperative of the defective verb كَانَ, plural, an unusual construction, a divine command directly transforming a state of being rather than commanding an action. قِرَدَةً: manṣūb, khabar of كُونُوا, plural of قِرْد (ape). خَاسِئِينَ: manṣūb, active participle plural from root خ-س-أ (to be driven away in disgrace), functioning as a second, descriptive predicate, "apes, despised."' }
+    ],
+    highlight: 'كُونُوا قِرَدَةً uses the imperative of كَانَ itself, grammatically a command to become, not merely to do, which is precisely why exegetes read this as an instantaneous transformation rather than a gradual consequence.'
+  },
+  66: {
+    arabic: 'فَجَعَلْنَاهَا نَكَالًا لِّمَا بَيْنَ يَدَيْهَا وَمَا خَلْفَهَا وَمَوْعِظَةً لِّلْمُتَّقِينَ',
+    transliteration: 'fa-jaʿalnāhā nakālan limā bayna yadayhā wa-mā khalfahā wa-mawʿiẓatan lil-muttaqīna',
+    translation: 'And We made it a deterrent punishment for those who were present and those who succeeded them, and a lesson for the righteous',
+    tags: ['verb', 'noun'],
+    tagLabels: ['Form I جَعَلْنَاهَا, two objects', 'Idiom: بَيْنَ يَدَيْ (before/present)'],
+    summary: 'The transformation becomes a lesson for others, near and far',
+    analysis: [
+      { word: 'فَجَعَلْنَاهَا نَكَالًا', detail: 'جَعَلْنَا: Form I perfect, root ج-ع-ل (to make/render, the same root behind اجْعَلْهُ in Maryam v.6 and وَاجْعَلْهُ رَبِّ), taking two objects: هَا (it, referring back to the transformation of v.65) and نَكَالًا (deterrent example/exemplary punishment, root ن-ك-ل).' },
+      { word: 'لِّمَا بَيْنَ يَدَيْهَا وَمَا خَلْفَهَا', detail: 'بَيْنَ يَدَيْهَا: idiomatic phrase, literally "between its two hands," meaning "before it / in its presence," a common Qurʾānic idiom for what is contemporaneous or immediately following. مَا خَلْفَهَا: "what is behind it," i.e., later generations. Together the phrase spans both the immediate witnesses and those who would hear of the event afterward.' },
+      { word: 'وَمَوْعِظَةً لِّلْمُتَّقِينَ', detail: 'مَوْعِظَةً: coordinated third object of جَعَلْنَا, from root و-ع-ظ (to admonish/counsel), "a lesson/admonition." لِّلْمُتَّقِينَ: "for the righteous," active participle plural from root و-ق-ي (the same root behind تَقِيًّا in Maryam v.13), specifying that the lesson lands specifically on those already inclined toward God-consciousness.' }
+    ],
+    highlight: 'بَيْنَ يَدَيْهَا وَمَا خَلْفَهَا (before it and behind it) is a fixed Qurʾānic idiom using body-part vocabulary (يَدَيْ, two hands) for temporal/spatial position, recognizing such idioms is essential, since a literal hands-and-back translation would misread the verse entirely.'
+  },
+  67: {
+    arabic: 'وَإِذْ قَالَ مُوسَىٰ لِقَوْمِهِ إِنَّ اللَّهَ يَأْمُرُكُمْ أَن تَذْبَحُوا بَقَرَةً ۖ قَالُوا أَتَتَّخِذُنَا هُزُوًا ۖ قَالَ أَعُوذُ بِاللَّهِ أَنْ أَكُونَ مِنَ الْجَاهِلِينَ',
+    transliteration: 'wa-idh qāla mūsā li-qawmihi inna llāha yaʾmurukum an tadhbaḥū baqaratan qālū atattakhidhunā huzuwan qāla aʿūdhu billāhi an akūna mina l-jāhilīna',
+    translation: 'And when Moses said to his people, indeed God commands you to slaughter a cow, they said, do you take us in mockery? He said, I seek refuge in God from being among the ignorant',
+    tags: ['verb', 'structure'],
+    tagLabels: ['أَنْ + subjunctive (commanded action)', 'The surah namesake root بقر begins here'],
+    summary: 'The command to slaughter a cow, the beginning of the story that names this surah',
+    analysis: [
+      { word: 'إِنَّ اللَّهَ يَأْمُرُكُمْ أَن تَذْبَحُوا بَقَرَةً', detail: 'يَأْمُرُكُمْ: Form I imperfect, root أ-م-ر (to command, the same root behind أَتَأْمُرُونَ in v.44), 3rd person, + object suffix. أَن: subordinating particle introducing a subjunctive noun clause after a verb of commanding. تَذْبَحُوا: Form I subjunctive, root ذ-ب-ح (to slaughter, the same root as يُذَبِّحُونَ describing Pharaoh\047s slaughter of infants in v.49, here in a starkly different ritual context). بَقَرَةً: direct object, manṣūb, indefinite, "a cow," root ب-ق-ر, the word that gives this entire surah its name.' },
+      { word: 'أَتَتَّخِذُنَا هُزُوًا', detail: 'أَتَتَّخِذُنَا: interrogative hamza + Form VIII imperfect, root أ-خ-ذ (the same root running through this whole passage: اتَّخَذْتُمُ v.51, أَخَذْنَا v.63, خُذُوا v.63), 2nd person + object suffix, "are you taking us." هُزُوًا: manṣūb, second object, from root ه-ز-أ (to mock), "in mockery."' },
+      { word: 'قَالَ أَعُوذُ بِاللَّهِ أَنْ أَكُونَ مِنَ الْجَاهِلِينَ', detail: 'أَعُوذُ: Form I imperfect, root ع-و-ذ (to seek refuge), 1st person singular, Moses immediate, humble response to the accusation. أَنْ أَكُونَ: subjunctive of كَانَ after أَنْ, "that I be." الْجَاهِلِينَ: majrūr after مِنَ, active participle plural from root ج-ه-ل (to be ignorant), Moses distances himself from the charge of mockery by invoking its opposite: ignorance, the state a true messenger of God cannot occupy.' }
+    ],
+    highlight: 'بَقَرَةً, a single indefinite noun in this verse (root ب-ق-ر), gives the entire surah its name, Al-Baqarah, The Cow. Everything from here through v.71 elaborates a single grammatical object introduced in this one clause.'
+  },
+  68: {
+    arabic: 'قَالُوا ادْعُ لَنَا رَبَّكَ يُبَيِّن لَّنَا مَا هِيَ ۚ قَالَ إِنَّهُ يَقُولُ إِنَّهَا بَقَرَةٌ لَّا فَارِضٌ وَلَا بِكْرٌ عَوَانٌ بَيْنَ ذَٰلِكَ ۖ فَافْعَلُوا مَا تُؤْمَرُونَ',
+    transliteration: 'qālū dʿu lanā rabbaka yubayyin lanā mā hiya qāla innahu yaqūlu innahā baqaratun lā fāriḍun wa-lā bikrun ʿawānun bayna dhālika fa-fʿalū mā tuʾmarūna',
+    translation: 'They said, call upon your Lord to make clear to us what it is. He said, He says it is a cow neither old nor young, but median between that, so do what you are commanded',
+    tags: ['verb', 'structure'],
+    tagLabels: ['Jussive response يُبَيِّن', 'Double negation لَّا...وَلَا (neither...nor)'],
+    summary: 'The first clarifying question, age, answered with a negation pair',
+    analysis: [
+      { word: 'ادْعُ لَنَا رَبَّكَ يُبَيِّن لَّنَا مَا هِيَ', detail: 'ادْعُ: Form I imperative, root د-ع-و (to call/supplicate, the same root as دُعَاء in Maryam v.4), singular, addressed to Moses. يُبَيِّن: Form II jussive, root ب-ي-ن (to be clear), 3rd person, jussive as the response to the imperative, the same command-then-jussive-consequence pattern seen repeatedly (v.40, v.58). مَا هِيَ: "what it is," an embedded question clause.' },
+      { word: 'بَقَرَةٌ لَّا فَارِضٌ وَلَا بِكْرٌ', detail: 'بَقَرَةٌ: predicate, marfūʿ, indefinite. لَّا فَارِضٌ: negated noun, "not old" (root ف-ر-ض, here meaning advanced in age). وَلَا بِكْرٌ: second negated noun, "nor young" (root ب-ك-ر). The لَا...وَلَا pair creates an exhaustive exclusion of both extremes.' },
+      { word: 'عَوَانٌ بَيْنَ ذَٰلِكَ', detail: 'عَوَانٌ: marfūʿ, a second predicate describing the cow as middling, from a root associated with things at a mature midpoint. بَيْنَ ذَٰلِكَ: "between that," an unusual but attested construction using the singular demonstrative ذَٰلِكَ to summarize the two extremes just named as one collective reference point.' }
+    ],
+    highlight: 'لَّا فَارِضٌ وَلَا بِكْرٌ عَوَانٌ بَيْنَ ذَٰلِكَ excludes both extremes, old and young, before naming the actual answer, middling, a rhetorical technique of negating the boundaries first, which sharpens the positive description that follows.'
+  },
+  69: {
+    arabic: 'قَالُوا ادْعُ لَنَا رَبَّكَ يُبَيِّن لَّنَا مَا لَوْنُهَا ۚ قَالَ إِنَّهُ يَقُولُ إِنَّهَا بَقَرَةٌ صَفْرَاءُ فَاقِعٌ لَّوْنُهَا تَسُرُّ النَّاظِرِينَ',
+    transliteration: 'qālū dʿu lanā rabbaka yubayyin lanā mā lawnuhā qāla innahu yaqūlu innahā baqaratun ṣafrāʾu fāqiʿun lawnuhā tasurru l-nāẓirīna',
+    translation: 'They said, call upon your Lord to make clear to us its color. He said, He says it is a yellow cow, bright in color, pleasing to the observers',
+    tags: ['noun', 'structure'],
+    tagLabels: ['Refrain repeats v.68 opening exactly', 'Elative-adjacent فَاقِعٌ'],
+    summary: 'The second clarifying question, color, using the same question-formula as before',
+    analysis: [
+      { word: 'قَالُوا ادْعُ لَنَا رَبَّكَ يُبَيِّن لَّنَا', detail: 'This entire opening repeats v.68 verbatim, with only the embedded question changing (مَا لَوْنُهَا instead of مَا هِيَ), the same ring-structure device seen already in vv.40/47 with the Banī Isrāʾīl address, here used to stage the escalating, increasingly detailed demands of the people through a repeated grammatical frame.' },
+      { word: 'بَقَرَةٌ صَفْرَاءُ فَاقِعٌ لَّوْنُهَا', detail: 'صَفْرَاءُ: feminine adjective (pattern faʿlāʾ, used for basic colors), root ص-ف-ر, "yellow," agreeing with بَقَرَةٌ. فَاقِعٌ: marfūʿ, intensifying adjective describing the vividness/brightness of the color specifically, functioning almost adverbially over لَّوْنُهَا (its color) even though grammatically it is the predicate of a separate nominal clause embedded within the description.' },
+      { word: 'تَسُرُّ النَّاظِرِينَ', detail: 'تَسُرُّ: Form I imperfect, root س-ر-ر (to please/delight), 3rd person feminine (referring to the cow), "it pleases." النَّاظِرِينَ: direct object, active participle plural from root ن-ظ-ر (to look, the same root as تَنظُرُونَ in vv.50 and 55), "those who look/observers."' }
+    ],
+    highlight: 'The verse repeats v.68 question-formula word for word, changing only the embedded question, this exact-repetition-with-one-variable pattern is a recurring Qurʾānic device (compare vv.40/47) for staging a sequence of related events without inventing new syntax for each.'
+  },
+  70: {
+    arabic: 'قَالُوا ادْعُ لَنَا رَبَّكَ يُبَيِّن لَّنَا مَا هِيَ إِنَّ الْبَقَرَ تَشَابَهَ عَلَيْنَا وَإِنَّا إِن شَاءَ اللَّهُ لَمُهْتَدُونَ',
+    transliteration: 'qālū dʿu lanā rabbaka yubayyin lanā mā hiya inna l-baqara tashābaha ʿalaynā wa-innā in shāʾa llāhu la-muhtadūna',
+    translation: 'They said, call upon your Lord to make clear to us what it is; indeed all cows look alike to us, and indeed we, if God wills, will be guided',
+    tags: ['verb', 'structure'],
+    tagLabels: ['Form VI تَشَابَهَ (mutual resemblance)', 'إِنْ + شَاءَ conditional', 'لَـ + مُهْتَدُونَ emphasis'],
+    summary: 'The third question, and a rare note of hope closing the exchange',
+    analysis: [
+      { word: 'إِنَّ الْبَقَرَ تَشَابَهَ عَلَيْنَا', detail: 'الْبَقَرَ: collective noun, "cattle/cows in general" (distinct from بَقَرَةٌ, a single cow, used in the preceding verses), subject of إِنَّ, manṣūb. تَشَابَهَ: Form VI perfect, root ش-ب-ه (to resemble), 3rd person masculine, Form VI reciprocal sense fits precisely: the cows resemble one another to the point of indistinguishability, not simply resemble some external standard.' },
+      { word: 'وَإِنَّا إِن شَاءَ اللَّهُ لَمُهْتَدُونَ', detail: 'إِنَّا: إِنَّ + suffix, "indeed we." إِن شَاءَ اللَّهُ: conditional particle إِنْ + Form I perfect (root ش-ي-أ, to will), a fixed formula of humble qualification, "if God wills." لَمُهْتَدُونَ: لَـ (emphatic) + active participle plural, Form VIII, root ه-د-ي (the same root as تَهْتَدُونَ in v.53), "surely guided," the emphatic لَـ reinforcing their expressed hope despite their repeated hesitation across the three questions.' }
+    ],
+    highlight: 'تَشَابَهَ (Form VI, root ش-ب-ه) grammatically encodes mutual, reciprocal resemblance among the cattle, after three rounds of questions revealing increasing specificity, the people admit the underlying problem is not stubbornness but genuine visual indistinguishability among ordinary cows.'
   }
 } }
-
