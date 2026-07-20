@@ -4,7 +4,7 @@
 // in data/verses.js's app.js (grammar explorer) so it becomes clickable there.
 // This file is loaded via <script src="data/roots.js"></script> before app.js runs.
 
-const ROOTS = [
+if (typeof window.ROOTS === 'undefined') { window.ROOTS = [
   {
     id: 'rbb',
     arabic: 'ربّ',
@@ -272,3 +272,5 @@ const ROOTS = [
     ]
   }
 ];
+
+}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="data/baqarah-verses.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; -webkit-text-size-adjust: 100%; }
+  * { box-sizing: border-box; }
+  a { text-decoration: none; }
+</style>
+</helmet>
+
+<div style="font-family:'Inter',sans-serif;background:#ffffff;color:#212121;min-height:100vh;">
+  <div style="max-width:720px;margin:0 auto;padding:40px 20px 80px;">
+
+    <div style="margin-bottom:20px;">
+      <a href="index.html" style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#75758a;">&larr; All passages</a>
+    </div>
+
+    <header style="margin-bottom:24px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#6b4423;">Ch. 2 &middot; Surah Al-Baqarah &middot; 2:40&ndash;60 (batches 1&ndash;2 of 40&ndash;123)</span>
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:26px;letter-spacing:-0.01em;margin:4px 0 0;">Verse Grammar</h1>
+      <p style="margin-top:6px;font-size:13px;color:#93939f;">Covenant, Banī Isrāʾīl, and the rescue from Pharaoh &mdash; more verses to follow</p>
+      <a href="baqarah-root-explorer.html" style="display:inline-block;margin-top:10px;font-size:12px;font-family:'JetBrains Mono',monospace;color:#6b4423;border:1px solid #d9d9dd;padding:6px 12px;border-radius:8px;">Open Root Explorer &rarr;</a>
+    </header>
+
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;padding:10px;border-radius:16px;background:#eeece7;">
+      <sc-for list="{{ verseButtons }}" as="b" hint-placeholder-count="21">
+        <button onClick="{{ b.select }}" style="cursor:pointer;padding:8px 13px;border-radius:10px;font-family:'Inter',sans-serif;font-size:13px;min-width:44px;min-height:40px;border:1px solid {{ b.borderColor }};background:{{ b.bg }};color:{{ b.color }};font-weight:{{ b.weight }};">{{ b.num }}</button>
+      </sc-for>
+    </div>
+
+    <div style="background:#ffffff;border:1px solid #d9d9dd;border-radius:16px;padding:20px 22px;margin-bottom:16px;">
+      <div style="font-size:12px;color:#93939f;margin-bottom:8px;">Verse {{ verse.n }} &middot; Al-Baqarah</div>
+      <div style="font-family:'Amiri',serif;font-size:26px;direction:rtl;text-align:right;line-height:1.9;color:#212121;">{{ verse.arabic }}</div>
+      <div style="font-size:13px;color:#75758a;margin-top:10px;font-style:italic;">{{ verse.transliteration }}</div>
+      <div style="font-size:13px;color:#212121;margin-top:6px;line-height:1.5;">{{ verse.translation }}</div>
+      <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:6px;">
+        <sc-for list="{{ verse.tags }}" as="tag" hint-placeholder-count="2">
+          <span style="display:inline-block;padding:4px 11px;border-radius:9999px;font-size:11px;font-weight:600;background:{{ tag.bg }};color:{{ tag.color }};">{{ tag.label }}</span>
+        </sc-for>
+      </div>
+    </div>
+
+    <p style="font-size:15px;font-weight:600;color:#5c5a55;margin:0 0 10px 2px;">{{ verse.summary }}</p>
+
+    <div style="background:#ffffff;border:1px solid #d9d9dd;border-radius:16px;padding:16px 18px;margin-bottom:16px;">
+      <sc-for list="{{ verse.analysis }}" as="item" hint-placeholder-count="3">
+        <div style="padding:12px 0;border-bottom:1px solid #f2f2f2;">
+          <div style="font-family:'Amiri',serif;font-size:24px;direction:rtl;text-align:right;color:#212121;margin-bottom:4px;">{{ item.word }}</div>
+          <div style="font-size:13px;color:#5c5a55;line-height:1.6;" dangerouslySetInnerHTML="{{ item.detailHtml }}"></div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="background:#faf1e6;border:1px solid rgba(107,68,35,0.18);border-left:3px solid #6b4423;border-radius:0 16px 16px 0;padding:14px 18px;margin-bottom:20px;">
+      <div style="font-size:11px;font-weight:700;color:#6b4423;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.04em;">Key grammatical insight</div>
+      <div style="font-size:13px;color:#212121;line-height:1.6;" dangerouslySetInnerHTML="{{ verse.highlightHtml }}"></div>
+    </div>
+
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <button onClick="{{ prev }}" style="cursor:pointer;flex:1;padding:12px;border:1px solid #d9d9dd;border-radius:10px;background:#ffffff;color:#212121;font-family:'Inter',sans-serif;font-size:13px;min-height:44px;">&larr; Previous verse</button>
+      <button onClick="{{ next }}" style="cursor:pointer;flex:1;padding:12px;border:1px solid #d9d9dd;border-radius:10px;background:#ffffff;color:#212121;font-family:'Inter',sans-serif;font-size:13px;min-height:44px;">Next verse &rarr;</button>
+    </div>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+// SCOPE NOTE: VERSE_END is 60, not 123 — this is batches 1-2 of the requested
+// 2:40–123 range. Raise VERSE_END as more verses are added to
+// data/baqarah-verses.js, and add their roots to ROOT_LINKS below.
+const VERSE_START = 40, VERSE_END = 60;
+const ROOT_LINKS = {
+  // NOTE: keys must match baqarah-verses.js text EXACTLY — no spaces around
+  // the dashes. (This exact spacing bug has bitten this project twice before
+  // on the Kahf page — double-check this block whenever you regenerate this
+  // file through a design tool.)
+  'ع-ه-د': { id: 'ʿhd' },
+  'ن-ج-و': { id: 'njw' },
+  'ص-ل-و': { id: 'slw' },
+  'ظ-ل-م': { id: 'ẓlm' },
+  'ت-و-ب': { id: 'twb' },
+  'و-ع-د': { id: 'wʿd' },
+  // Cross-surah shared roots already covered elsewhere:
+  'ح-ي-ي': { href: 'maryam-root-explorer.html?root=hyy' },
+  'ص-ب-ر': { href: 'kahf-root-explorer.html?root=sbr' },
+};
+const TAG_STYLES = [
+  { bg: '#faf1e6', color: '#6b4423' },
+  { bg: '#f1f5ff', color: '#1863dc' },
+  { bg: '#eeece7', color: '#75758a' },
+  { bg: 'rgba(155,96,170,0.12)', color: '#9b60aa' },
+  { bg: 'rgba(255,119,89,0.14)', color: '#c1502e' },
+];
+
+class Component extends DCLogic {
+  state = { currentVerse: VERSE_START };
+
+  linkifyRoots(text) {
+    let out = text;
+    for (const [pattern, target] of Object.entries(ROOT_LINKS)) {
+      const href = target.href || `baqarah-root-explorer.html?root=${target.id}`;
+      out = out.split(pattern).join(
+        `<a href="${href}" style="display:inline-flex;align-items:center;gap:3px;padding:2px 9px;margin:0 1px;border-radius:9999px;background:#faf1e6;color:#6b4423;font-family:'Amiri',serif;font-size:13px;text-decoration:none;border:1px solid rgba(107,68,35,0.25);white-space:nowrap;">${pattern}<span style="font-family:'Inter',sans-serif;font-size:10px;">&#8599;</span></a>`
+      );
+    }
+    return out;
+  }
+
+  select(n) { this.setState({ currentVerse: n }); }
+  prev() { this.setState(s => ({ currentVerse: Math.max(VERSE_START, s.currentVerse - 1) })); }
+  next() { this.setState(s => ({ currentVerse: Math.min(VERSE_END, s.currentVerse + 1) })); }
+
+  renderVals() {
+    const data = window.verses || {};
+    const n = this.state.currentVerse;
+    const v = data[n] || { arabic: '', transliteration: '', translation: '', tagLabels: [], summary: '', analysis: [], highlight: '' };
+
+    const verseButtons = [];
+    for (let i = VERSE_START; i <= VERSE_END; i++) {
+      const active = i === n;
+      verseButtons.push({
+        num: i,
+        select: () => this.select(i),
+        bg: active ? '#6b4423' : '#ffffff',
+        color: active ? '#ffffff' : '#212121',
+        borderColor: active ? '#6b4423' : '#d9d9dd',
+        weight: active ? 600 : 400,
+      });
+    }
+
+    const tags = (v.tagLabels || []).map((label, i) => ({ label, ...TAG_STYLES[i % 5] }));
+    const analysis = (v.analysis || []).map(a => ({ word: a.word, detailHtml: { __html: this.linkifyRoots(a.detail) } }));
+
+    return {
+      verseButtons,
+      verse: {
+        n,
+        arabic: v.arabic,
+        transliteration: v.transliteration,
+        translation: v.translation,
+        tags,
+        summary: v.summary,
+        analysis,
+        highlightHtml: { __html: this.linkifyRoots(v.highlight) },
+      },
+      prev: () => this.prev(),
+      next: () => this.next(),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

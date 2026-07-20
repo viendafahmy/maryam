@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="data/baqarah-roots.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; -webkit-text-size-adjust: 100%; }
+  * { box-sizing: border-box; }
+  a { text-decoration: none; }
+</style>
+</helmet>
+
+<div style="font-family:'Inter',sans-serif;background:#ffffff;color:#212121;min-height:100vh;">
+
+  <header style="background:#6b4423;color:#ffffff;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8fb8e0;">Root Explorer</div>
+      <div style="font-family:'Amiri',serif;font-size:20px;direction:rtl;margin-top:2px;">مستكشف جذور القرآن</div>
+    </div>
+    <a href="index.html" style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#c9def0;border:1px solid rgba(255,255,255,0.3);padding:6px 12px;border-radius:8px;margin-right:6px;">&larr; All Passages</a>
+    <a href="baqarah-verse-grammar.html" style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#c9def0;border:1px solid rgba(255,255,255,0.3);padding:6px 12px;border-radius:8px;">&larr; Verse Grammar</a>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#9bb6ca;text-align:right;">Surah Al-Baqarah &middot; 2<br>Roots from vv. 40&ndash;60 (batches 1&ndash;2 of 40&ndash;123)</div>
+  </header>
+
+  <div style="max-width:900px;margin:0 auto;padding:24px 20px 80px;">
+
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;padding:10px;border-radius:16px;background:#eeece7;">
+      <sc-for list="{{ sidebarItems }}" as="r" hint-placeholder-count="6">
+        <button onClick="{{ r.select }}" style="cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 14px;border-radius:10px;border:1px solid {{ r.borderColor }};background:{{ r.bg }};min-width:76px;">
+          <span style="font-family:'Amiri',serif;font-size:20px;direction:rtl;color:{{ r.color }};line-height:1;">{{ r.arabic }}</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:{{ r.color }};">{{ r.roman }}</span>
+        </button>
+      </sc-for>
+    </div>
+
+    <div style="display:flex;align-items:flex-start;gap:28px;flex-wrap:wrap;padding-bottom:24px;border-bottom:1px solid #d9d9dd;margin-bottom:24px;">
+      <div style="text-align:center;flex-shrink:0;">
+        <span style="font-size:56px;direction:rtl;line-height:1.3;color:#212121;font-family:'Amiri',serif;display:block;margin-bottom:10px;">{{ root.arabic }}</span>
+        <span style="font-size:13px;direction:rtl;color:#6b4423;font-family:'JetBrains Mono',monospace;display:block;margin-top:4px;letter-spacing:0.15em;">{{ root.letters }}</span>
+        <span style="font-size:13px;font-family:'JetBrains Mono',monospace;color:#93939f;display:block;margin-top:4px;">{{ root.roman }}</span>
+      </div>
+      <div style="flex:1;min-width:240px;">
+        <h1 style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:500;color:#212121;margin:0 0 6px;line-height:1.3;">{{ root.meaning }}</h1>
+        <p style="font-size:13px;color:#93939f;margin:0 0 12px;font-style:italic;">{{ root.semantic }}</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <div style="display:flex;flex-direction:column;padding:8px 14px;background:#eeece7;border:1px solid #d9d9dd;border-radius:8px;">
+            <span style="font-size:18px;font-weight:700;color:#6b4423;font-family:'JetBrains Mono',monospace;line-height:1;">{{ root.quranCount }}</span>
+            <span style="font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:#93939f;margin-top:2px;">Times in Quran</span>
+          </div>
+          <div style="display:flex;flex-direction:column;padding:8px 14px;background:#eeece7;border:1px solid #d9d9dd;border-radius:8px;">
+            <span style="font-size:18px;font-weight:700;color:#6b4423;font-family:'JetBrains Mono',monospace;line-height:1;">{{ root.surahCount }}</span>
+            <span style="font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:#93939f;margin-top:2px;">Times in Al-Kahf</span>
+          </div>
+          <div style="display:flex;flex-direction:column;padding:8px 14px;background:#eeece7;border:1px solid #d9d9dd;border-radius:8px;">
+            <span style="font-size:18px;font-weight:700;color:#6b4423;font-family:'JetBrains Mono',monospace;line-height:1;">{{ root.attestedForms }}</span>
+            <span style="font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:#93939f;margin-top:2px;">Attested forms</span>
+          </div>
+        </div>
+        <div style="margin-top:12px;font-size:13px;color:#212121;line-height:1.7;padding:10px 14px;background:#f1f5ff;border-left:3px solid #6b4423;border-radius:0 8px 8px 0;">{{ root.memoryAid }}</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:4px;border-bottom:1px solid #d9d9dd;margin-bottom:20px;">
+      <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="3">
+        <button onClick="{{ tab.select }}" style="padding:10px 16px;font-size:12px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.06em;cursor:pointer;background:none;border:none;border-bottom:2px solid {{ tab.borderColor }};margin-bottom:-1px;color:{{ tab.color }};">{{ tab.label }}</button>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{ isFormsTab }}" hint-placeholder-val="{{ true }}">
+      <div>
+        <div style="display:grid;grid-template-columns:38px 90px 120px 1fr 130px;gap:12px;padding:6px 14px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#93939f;">
+          <div>Form</div><div style="text-align:right;">Past (3ms)</div><div>Pattern</div><div>Meaning</div><div style="text-align:right;">Ma&#7779;dar</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <sc-for list="{{ formRows }}" as="f" hint-placeholder-count="10">
+            <div onClick="{{ f.select }}" style="display:grid;grid-template-columns:38px 90px 120px 1fr 130px;align-items:center;gap:12px;padding:10px 14px;background:{{ f.bg }};border:1px solid #d9d9dd;border-left:3px solid {{ f.accentColor }};border-radius:8px;cursor:{{ f.cursor }};opacity:{{ f.opacity }};">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#93939f;text-align:center;background:#eeece7;padding:3px 0;border-radius:4px;">{{ f.num }}</div>
+              <div style="font-size:17px;direction:rtl;text-align:right;font-family:'Amiri',serif;color:#212121;">{{ f.arabic }}</div>
+              <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:#6b4423;">{{ f.pattern }}</div>
+              <div style="font-size:13px;color:#212121;">{{ f.meaning }}</div>
+              <div style="font-size:13px;direction:rtl;text-align:right;font-family:'Amiri',serif;color:#93939f;">{{ f.masdar }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <sc-if value="{{ formDetail }}" hint-placeholder-val="{{ null }}">
+          <div style="background:#f1f5ff;border:1px solid #6b4423;border-radius:8px;padding:16px 18px;margin-top:16px;">
+            <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:12px;flex-wrap:wrap;">
+              <span style="font-size:26px;direction:rtl;color:#212121;font-family:'Amiri',serif;">{{ formDetail.arabic }}</span>
+              <span style="font-size:13px;font-family:'JetBrains Mono',monospace;color:#6b4423;">{{ formDetail.title }}</span>
+            </div>
+            <div style="font-size:13px;color:#212121;line-height:1.75;">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#6b4423;display:block;margin-bottom:2px;">Meaning</span>
+              {{ formDetail.meaning }}
+              <sc-if value="{{ formDetail.hasMasdar }}" hint-placeholder-val="{{ false }}">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#6b4423;display:block;margin-top:10px;margin-bottom:2px;">Ma&#7779;dar (verbal noun)</span>
+                <span style="font-size:18px;direction:rtl;font-family:'Amiri',serif;">{{ formDetail.masdar }}</span>
+              </sc-if>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#6b4423;display:block;margin-top:10px;margin-bottom:2px;">How this form works</span>
+              {{ formDetail.detail }}
+              <sc-if value="{{ formDetail.hasPerfect }}" hint-placeholder-val="{{ false }}">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#6b4423;display:block;margin-top:10px;margin-bottom:2px;">Perfect (past) tense</span>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:6px;margin-top:8px;">
+                  <sc-for list="{{ formDetail.perfect }}" as="c" hint-placeholder-count="3">
+                    <div style="background:#ffffff;border:1px solid #d9d9dd;border-radius:4px;padding:6px 10px;display:flex;justify-content:space-between;align-items:center;gap:8px;">
+                      <span style="font-size:10px;color:#93939f;font-family:'JetBrains Mono',monospace;">{{ c.t }}</span>
+                      <span style="font-size:15px;direction:rtl;font-family:'Amiri',serif;">{{ c.p }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{ formDetail.hasImperfect }}" hint-placeholder-val="{{ false }}">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#6b4423;display:block;margin-top:10px;margin-bottom:2px;">Imperfect (present/future) tense</span>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:6px;margin-top:8px;">
+                  <sc-for list="{{ formDetail.imperfect }}" as="c" hint-placeholder-count="3">
+                    <div style="background:#ffffff;border:1px solid #d9d9dd;border-radius:4px;padding:6px 10px;display:flex;justify-content:space-between;align-items:center;gap:8px;">
+                      <span style="font-size:10px;color:#93939f;font-family:'JetBrains Mono',monospace;">{{ c.t }}</span>
+                      <span style="font-size:15px;direction:rtl;font-family:'Amiri',serif;">{{ c.p }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isDerivedTab }}" hint-placeholder-val="{{ false }}">
+      <div>
+        <sc-if value="{{ derivedDetail }}" hint-placeholder-val="{{ null }}">
+          <div style="background:#ffe9e3;border:1px solid #ff7759;border-radius:8px;padding:16px 18px;margin-bottom:16px;">
+            <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px;flex-wrap:wrap;">
+              <span style="font-size:26px;direction:rtl;color:#212121;font-family:'Amiri',serif;">{{ derivedDetail.arabic }}</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#c1502e;">{{ derivedDetail.roman }}</span>
+            </div>
+            <div style="font-size:13px;color:#212121;line-height:1.7;">
+              <strong>Meaning:</strong> {{ derivedDetail.meaning }}<br>
+              <strong>Pattern:</strong> <span style="font-family:'JetBrains Mono',monospace;color:#c1502e;">{{ derivedDetail.pattern }}</span>
+            </div>
+          </div>
+        </sc-if>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;">
+          <sc-for list="{{ derivedCards }}" as="d" hint-placeholder-count="8">
+            <div onClick="{{ d.select }}" style="background:#eeece7;border:1px solid #d9d9dd;border-top:3px solid {{ d.accentColor }};border-radius:8px;padding:12px 14px;cursor:pointer;">
+              <span style="font-size:20px;direction:rtl;color:#212121;font-family:'Amiri',serif;display:block;margin-bottom:4px;">{{ d.arabic }}</span>
+              <span style="font-size:11px;font-family:'JetBrains Mono',monospace;color:#6b4423;display:block;">{{ d.roman }}</span>
+              <span style="font-size:12px;color:#212121;margin-top:4px;display:block;">{{ d.meaning }}</span>
+              <span style="font-size:10px;font-family:'JetBrains Mono',monospace;color:#93939f;margin-top:4px;display:block;">{{ d.pattern }}</span>
+              <span style="display:inline-block;font-size:10px;padding:2px 7px;border-radius:8px;margin-top:5px;font-family:'JetBrains Mono',monospace;background:{{ d.badgeBg }};color:{{ d.badgeColor }};">{{ d.typeLabel }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isOccTab }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <sc-for list="{{ occurrences }}" as="o" hint-placeholder-count="3">
+          <div style="background:#eeece7;border:1px solid #d9d9dd;border-left:3px solid #6b4423;border-radius:8px;padding:12px 16px;">
+            <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:#6b4423;margin-bottom:4px;">Surah Al-Baqarah &middot; {{ o.ref }}</div>
+            <div style="font-size:18px;direction:rtl;text-align:right;line-height:1.8;color:#212121;font-family:'Amiri',serif;margin-bottom:4px;" dangerouslySetInnerHTML="{{ o.arabicHtml }}"></div>
+            <div style="font-size:12px;color:#93939f;font-style:italic;">{{ o.trans }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const TYPE_STYLES = {
+  noun:   { bg: '#f1f5ff', color: '#1863dc', label: 'noun' },
+  part:   { bg: '#ffe9e3', color: '#c1502e', label: 'part' },
+  masdar: { bg: 'rgba(155,96,170,0.14)', color: '#9b60aa', label: 'maṣdar' },
+  adj:    { bg: 'rgba(76,110,230,0.12)', color: '#4c6ee6', label: 'adj' },
+  verb:   { bg: '#f1f5ff', color: '#6b4423', label: 'verb' },
+  plural: { bg: '#eeece7', color: '#75758a', label: 'plural' },
+  divine: { bg: '#fff4e0', color: '#8b5e00', label: 'divine' },
+};
+const ACCENT = '#6b4423';
+
+class Component extends DCLogic {
+  state = { activeRoot: null, activeTab: 'forms', activeFormIndex: null, activeDerivedIndex: null };
+
+  componentDidMount() {
+    const ROOTS = window.ROOTS || [];
+    const params = new URLSearchParams(window.location.search);
+    const requested = params.get('root');
+    const found = requested && ROOTS.some(r => r.id === requested) ? requested : (ROOTS[0] && ROOTS[0].id);
+    if (found) this.setState({ activeRoot: found });
+  }
+
+  selectRoot(id) {
+    this.setState({ activeRoot: id, activeTab: 'forms', activeFormIndex: null, activeDerivedIndex: null });
+    const url = new URL(window.location);
+    url.searchParams.set('root', id);
+    window.history.replaceState({}, '', url);
+  }
+  switchTab(tab) { this.setState({ activeTab: tab, activeFormIndex: null, activeDerivedIndex: null }); }
+  selectForm(i) { this.setState(s => ({ activeFormIndex: s.activeFormIndex === i ? null : i })); }
+  selectDerived(i) { this.setState(s => ({ activeDerivedIndex: s.activeDerivedIndex === i ? null : i })); }
+
+  renderVals() {
+    const ROOTS = window.ROOTS || [];
+    const activeRoot = this.state.activeRoot || (ROOTS[0] && ROOTS[0].id);
+    const root = ROOTS.find(r => r.id === activeRoot) || ROOTS[0] || { forms: [], derived: [], occurrences: [] };
+
+    const sidebarItems = ROOTS.map(r => {
+      const active = r.id === activeRoot;
+      return {
+        arabic: r.arabic, roman: r.roman,
+        select: () => this.selectRoot(r.id),
+        bg: active ? ACCENT : '#ffffff',
+        color: active ? '#ffffff' : '#212121',
+        borderColor: active ? ACCENT : '#d9d9dd',
+      };
+    });
+
+    const tabDefs = [ ['forms', 'Verb Forms (أوزان)'], ['derived', 'Derived Words'], ['occ', 'In Surah Al-Baqarah'] ];
+    const tabs = tabDefs.map(([key, label]) => ({
+      label, select: () => this.switchTab(key),
+      color: this.state.activeTab === key ? ACCENT : '#93939f',
+      borderColor: this.state.activeTab === key ? ACCENT : 'transparent',
+    }));
+
+    const formRows = (root.forms || []).map((f, i) => ({
+      num: f.num, arabic: f.arabic, pattern: f.pattern, meaning: f.meaning, masdar: f.masdar,
+      select: f.attested ? (() => this.selectForm(i)) : (() => {}),
+      cursor: f.attested ? 'pointer' : 'default',
+      opacity: f.attested ? 1 : 0.5,
+      accentColor: f.attested ? '#f1f5ff' : '#d9d9dd',
+      bg: this.state.activeFormIndex === i ? '#f1f5ff' : '#eeece7',
+    }));
+
+    let formDetail = null;
+    if (this.state.activeFormIndex !== null && root.forms && root.forms[this.state.activeFormIndex]) {
+      const f = root.forms[this.state.activeFormIndex];
+      formDetail = {
+        arabic: f.arabic, title: `Form ${f.num} · ${f.pattern}`, meaning: f.meaning,
+        hasMasdar: !!(f.masdar && f.masdar !== '—'), masdar: f.masdar,
+        detail: f.detail,
+        hasPerfect: !!(f.perfect && f.perfect.length), perfect: f.perfect || [],
+        hasImperfect: !!(f.imperfect && f.imperfect.length), imperfect: f.imperfect || [],
+      };
+    }
+
+    const derivedCards = (root.derived || []).map((d, i) => {
+      const ts = TYPE_STYLES[d.type] || TYPE_STYLES.noun;
+      return {
+        arabic: d.arabic, roman: d.roman, meaning: d.meaning, pattern: d.pattern,
+        select: () => this.selectDerived(i),
+        accentColor: ts.color, badgeBg: ts.bg, badgeColor: ts.color, typeLabel: ts.label,
+      };
+    });
+    let derivedDetail = null;
+    if (this.state.activeDerivedIndex !== null && root.derived && root.derived[this.state.activeDerivedIndex]) {
+      const d = root.derived[this.state.activeDerivedIndex];
+      derivedDetail = { arabic: d.arabic, roman: d.roman, meaning: d.meaning, pattern: d.pattern };
+    }
+
+    const occurrences = (root.occurrences || []).map(o => ({ ref: o.ref, trans: o.trans, arabicHtml: { __html: o.arabic } }));
+
+    return {
+      sidebarItems, tabs,
+      root: {
+        arabic: root.arabic, letters: root.letters, roman: root.roman, meaning: root.meaning, semantic: root.semantic,
+        quranCount: root.quranCount, surahCount: root.baqarahCount ?? root.maryamCount,
+        attestedForms: (root.forms || []).filter(f => f.attested).length,
+        memoryAid: root.memoryAid,
+      },
+      isFormsTab: this.state.activeTab === 'forms',
+      isDerivedTab: this.state.activeTab === 'derived',
+      isOccTab: this.state.activeTab === 'occ',
+      formRows, formDetail, derivedCards, derivedDetail, occurrences,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

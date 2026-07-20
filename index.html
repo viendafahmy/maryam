@@ -1,354 +1,127 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#F7F6F3">
-<meta name="description" content="A personal Quranic Arabic study companion — verse grammar, root morphology, and word-by-word analysis.">
-<title>Quranic Arabic — Study Companion</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { -webkit-text-size-adjust: 100%; }
-
-:root {
-  --bg:            #F7F6F3;
-  --surface:       #FFFFFF;
-  --border:        #E2E0DA;
-  --border-strong: #C8C5BC;
-  --text-primary:  #1A1916;
-  --text-secondary:#5C5A55;
-  --text-muted:    #9C9A95;
-  --maryam-accent: #4A6B3A;
-  --kahf-accent:   #2C5278;
-  --font-sans:     'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --radius:        4px;
-}
-
-body {
-  font-family: var(--font-sans);
-  background: var(--bg);
-  color: var(--text-primary);
-  min-height: 100vh;
-  min-height: 100dvh;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.page {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: clamp(40px, 8vw, 72px) clamp(20px, 5vw, 40px) 80px;
-}
-
-/* HEADER */
-.site-header {
-  margin-bottom: 56px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--border);
-}
-
-.site-title {
-  font-size: clamp(20px, 4vw, 26px);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: var(--text-primary);
-  line-height: 1.2;
-}
-
-.site-sub {
-  margin-top: 6px;
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--text-muted);
-}
-
-/* SECTION LABEL */
-.section-label {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 16px;
-}
-
-/* SURAH LIST */
-.surah-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
-  margin-bottom: 56px;
-}
-
-/* SURAH CARD */
-.surah-card {
-  background: var(--surface);
-  padding: 24px 24px 20px;
-  border-left: 3px solid transparent;
-  transition: background 0.12s ease;
-}
-
-.surah-card[data-surah="maryam"] { border-left-color: var(--maryam-accent); }
-.surah-card[data-surah="kahf"]   { border-left-color: var(--kahf-accent); }
-.surah-card[data-surah="coming"] { border-left-color: var(--border); opacity: 0.5; }
-
-.surah-card:hover:not([data-surah="coming"]) { background: #FAFAF8; }
-
-.card-top {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  margin-bottom: 4px;
-}
-
-.card-chapter {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  font-family: monospace;
-  flex-shrink: 0;
-}
-
-.card-name {
-  font-size: 17px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--text-primary);
-}
-
-.card-meta {
-  font-size: 12px;
-  color: var(--text-muted);
-  margin-bottom: 16px;
-  line-height: 1.5;
-}
-
-/* MODULE LINKS */
-.card-modules {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.module-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border-radius: var(--radius);
-  font-size: 12px;
-  font-weight: 500;
-  text-decoration: none;
-  border: 1px solid var(--border-strong);
-  color: var(--text-secondary);
-  background: var(--bg);
-  transition: border-color 0.12s, color 0.12s, background 0.12s;
-}
-
-.module-link:hover {
-  background: var(--surface);
-  color: var(--text-primary);
-  border-color: var(--text-secondary);
-}
-
-.surah-card[data-surah="maryam"] .module-link:hover {
-  border-color: var(--maryam-accent);
-  color: var(--maryam-accent);
-}
-
-.surah-card[data-surah="kahf"] .module-link:hover {
-  border-color: var(--kahf-accent);
-  color: var(--kahf-accent);
-}
-
-.module-link svg {
-  width: 12px;
-  height: 12px;
-  flex-shrink: 0;
-  opacity: 0.55;
-}
-
-.coming-tag {
-  display: inline-block;
-  font-size: 10px;
-  font-family: monospace;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  border: 1px solid var(--border-strong);
-  padding: 3px 8px;
-  border-radius: var(--radius);
-}
-
-/* HOW TO USE */
-.how-section {
-  border-top: 1px solid var(--border);
-  padding-top: 40px;
-  margin-bottom: 48px;
-}
-
-.how-title {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 24px;
-}
-
-.how-steps { display: flex; flex-direction: column; }
-
-.how-step {
-  display: grid;
-  grid-template-columns: 100px 1fr;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.how-step:last-child { border-bottom: none; }
-
-.step-label {
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--text-muted);
-  padding-top: 2px;
-  letter-spacing: 0.02em;
-}
-
-.step-body {
-  font-size: 13px;
-  color: var(--text-secondary);
-  line-height: 1.65;
-}
-
-.step-body strong {
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-/* FOOTER */
-.page-footer {
-  border-top: 1px solid var(--border);
-  padding-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px;
-  font-size: 11px;
-  color: var(--text-muted);
-}
-
-/* RESPONSIVE */
-@media (max-width: 480px) {
-  .surah-card { padding: 18px 16px 16px; }
-  .how-step { grid-template-columns: 1fr; gap: 4px; }
-  .step-label { font-size: 10px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .surah-card, .module-link { transition: none; }
-}
-
-.module-link:focus-visible {
-  outline: 2px solid var(--text-primary);
-  outline-offset: 2px;
-}
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
 <body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; -webkit-text-size-adjust: 100%; }
+  * { box-sizing: border-box; }
+  a { text-decoration: none; }
+</style>
+</helmet>
 
-<div class="page">
+<div style="font-family:'Inter',sans-serif;background:#ffffff;color:#212121;min-height:100vh;">
+  <div style="max-width:680px;margin:0 auto;padding:72px 24px 80px;">
 
-  <header class="site-header">
-    <h1 class="site-title">Quranic Arabic</h1>
-    <p class="site-sub">Verse grammar &middot; Root morphology &middot; Word-by-word analysis</p>
-  </header>
+    <header style="margin-bottom:56px;padding-bottom:24px;border-bottom:1px solid #d9d9dd;">
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:32px;letter-spacing:-0.02em;color:#212121;line-height:1.2;margin:0;">Quranic Arabic</h1>
+      <p style="margin-top:8px;font-size:14px;color:#75758a;">Verse grammar &middot; Root morphology &middot; Word-by-word analysis</p>
+    </header>
 
-  <p class="section-label">Passages</p>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#93939f;margin:0 0 16px;">Passages</p>
 
-  <div class="surah-list">
+    <div style="display:flex;flex-direction:column;gap:1px;background:#d9d9dd;border:1px solid #d9d9dd;border-radius:16px;overflow:hidden;margin-bottom:56px;">
 
-    <div class="surah-card" data-surah="maryam">
-      <div class="card-top">
-        <span class="card-chapter">Ch. 19</span>
-        <span class="card-name">Surah Maryam</span>
-      </div>
-      <p class="card-meta">Verses 1–15 &middot; Makkī &middot; The story of Zakariyyā and Yaḥyā</p>
-      <div class="card-modules">
-        <a class="module-link" href="maryam/index.html">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="1"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="9" x2="9" y2="9"/></svg>
-          Verse Grammar
-        </a>
-        <a class="module-link" href="maryam/maryam_root_explorer.html">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="4" r="2"/><line x1="8" y1="6" x2="8" y2="9"/><line x1="8" y1="9" x2="4" y2="13"/><line x1="8" y1="9" x2="12" y2="13"/></svg>
-          Root Explorer
-        </a>
-      </div>
+      <a href="baqarah-verse-grammar.html" style="display:block;background:#ffffff;padding:24px 24px 20px;border-left:4px solid #6b4423;color:inherit;">
+        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:6px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#93939f;">Ch. 2</span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:500;letter-spacing:-0.01em;">Surah Al-Baqarah</span>
+        </div>
+        <p style="font-size:13px;color:#93939f;margin-bottom:16px;line-height:1.5;">Verses 40&ndash;60 of 40&ndash;123 &middot; Madan&#299; &middot; Covenant, Ban&#299; Isr&#257;&#702;&#299;l, and the rescue from Pharaoh</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:9999px;font-size:12px;font-weight:500;border:1px solid #d9d9dd;color:#75758a;">Verse Grammar</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:9999px;font-size:12px;font-weight:500;border:1px solid #d9d9dd;color:#75758a;">→ Root Explorer</span>
+        </div>
+      </a>
+
+      <a href="baqarah-root-explorer.html" style="display:block;background:#ffffff;padding:14px 24px;border-left:4px solid #6b4423;color:#6b4423;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.04em;">→ Open Root Explorer for Surah Al-Baqarah</a>
+
+      <a href="kahf-verse-grammar.html" style="display:block;background:#ffffff;padding:24px 24px 20px;border-left:4px solid #071829;color:inherit;">
+        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:6px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#93939f;">Ch. 18</span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:500;letter-spacing:-0.01em;">Surah Al-Kahf</span>
+        </div>
+        <p style="font-size:13px;color:#93939f;margin-bottom:16px;line-height:1.5;">Verses 60&ndash;82 &middot; Makk&#299; &middot; The story of M&#363;s&#257; and al-Khi&#7693;r</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:9999px;font-size:12px;font-weight:500;border:1px solid #d9d9dd;color:#75758a;">Verse Grammar</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:9999px;font-size:12px;font-weight:500;border:1px solid #d9d9dd;color:#75758a;">→ Root Explorer</span>
+        </div>
+      </a>
+
+      <a href="kahf-root-explorer.html" style="display:block;background:#ffffff;padding:14px 24px;border-left:4px solid #071829;color:#071829;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.04em;">→ Open Root Explorer for Surah Al-Kahf</a>
+
+      <a href="maryam-verse-grammar.html" style="display:block;background:#ffffff;padding:24px 24px 20px;border-left:4px solid #003c33;color:inherit;">
+        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:6px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#93939f;">Ch. 19</span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:500;letter-spacing:-0.01em;">Surah Maryam</span>
+        </div>
+        <p style="font-size:13px;color:#93939f;margin-bottom:16px;line-height:1.5;">Verses 1&ndash;15 &middot; Makk&#299; &middot; The story of Zakariyy&#257; and Ya&#7717;y&#257;</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:9999px;font-size:12px;font-weight:500;border:1px solid #d9d9dd;color:#75758a;">Verse Grammar</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:9999px;font-size:12px;font-weight:500;border:1px solid #d9d9dd;color:#75758a;">→ Root Explorer</span>
+        </div>
+      </a>
+
+      <a href="maryam-root-explorer.html" style="display:block;background:#ffffff;padding:14px 24px;border-left:4px solid #003c33;color:#003c33;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.04em;">→ Open Root Explorer for Surah Maryam</a>
+
+      <sc-if value="{{ showComingSoon }}" hint-placeholder-val="{{ true }}">
+        <div style="background:#eeece7;padding:24px 24px 20px;border-left:4px solid #d9d9dd;opacity:0.7;">
+          <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:6px;">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#93939f;">&mdash;</span>
+            <span style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:400;color:#93939f;">More passages</span>
+          </div>
+          <p style="font-size:13px;color:#93939f;margin-bottom:12px;">{{ comingSoonList }}</p>
+          <span style="display:inline-block;font-size:10px;font-family:'JetBrains Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;color:#93939f;border:1px solid #d9d9dd;padding:4px 10px;border-radius:8px;">Coming soon</span>
+        </div>
+      </sc-if>
+
     </div>
 
-    <div class="surah-card" data-surah="kahf">
-      <div class="card-top">
-        <span class="card-chapter">Ch. 18</span>
-        <span class="card-name">Surah Al-Kahf</span>
+    <section style="border-top:1px solid #d9d9dd;padding-top:40px;margin-bottom:48px;">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#93939f;margin:0 0 24px;">How to use</p>
+      <div style="display:flex;flex-direction:column;">
+        <sc-for list="{{ steps }}" as="step" hint-placeholder-count="3">
+          <div style="display:grid;grid-template-columns:120px 1fr;padding:16px 0;border-bottom:1px solid #d9d9dd;gap:8px;">
+            <span style="font-size:12px;font-weight:500;color:#93939f;padding-top:2px;">{{ step.label }}</span>
+            <p style="font-size:14px;color:#75758a;line-height:1.6;margin:0;" dangerouslySetInnerHTML="{{ step.bodyHtml }}"></p>
+          </div>
+        </sc-for>
       </div>
-      <p class="card-meta">Verses 60–82 &middot; Makkī &middot; The story of Mūsā and al-Khiḍr</p>
-      <div class="card-modules">
-        <a class="module-link" href="kahf/index.html">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="1"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="9" x2="9" y2="9"/></svg>
-          Verse Grammar
-        </a>
-        <a class="module-link" href="kahf/kahf_root_explorer.html">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="4" r="2"/><line x1="8" y1="6" x2="8" y2="9"/><line x1="8" y1="9" x2="4" y2="13"/><line x1="8" y1="9" x2="12" y2="13"/></svg>
-          Root Explorer
-        </a>
-      </div>
-    </div>
+    </section>
 
-    <div class="surah-card" data-surah="coming" aria-hidden="true">
-      <div class="card-top">
-        <span class="card-chapter">—</span>
-        <span class="card-name" style="color:var(--text-muted); font-weight:400;">More passages</span>
-      </div>
-      <p class="card-meta">Al-Fātiḥa &middot; Yūsuf &middot; Al-Mulk &middot; ...</p>
-      <div class="card-modules">
-        <span class="coming-tag">Coming soon</span>
-      </div>
-    </div>
+    <footer style="border-top:1px solid #d9d9dd;padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px;color:#93939f;">
+      <span>corpus.quran.com &middot; quranwbw.com</span>
+      <span>Personal study &middot; Not for redistribution</span>
+    </footer>
 
   </div>
-
-  <section class="how-section">
-    <p class="how-title">How to use</p>
-    <div class="how-steps">
-      <div class="how-step">
-        <span class="step-label">Verse Grammar</span>
-        <p class="step-body">Read a passage verse by verse. Each word is parsed by <strong>root, grammatical form, and case</strong>. Tap a root badge to jump directly to its Root Explorer entry.</p>
-      </div>
-      <div class="how-step">
-        <span class="step-label">Root Explorer</span>
-        <p class="step-body">Study a root in depth — all <strong>ten verb forms</strong> (awzān), derived nouns, participles, and maṣdars, with every occurrence in the passage highlighted.</p>
-      </div>
-      <div class="how-step">
-        <span class="step-label">Cross-reference</span>
-        <p class="step-body">Roots shared between passages — <strong>ر-ح-م, س-ل-م, ع-ب-د</strong> — link across surahs. Learn a root once; recognize it everywhere.</p>
-      </div>
-    </div>
-  </section>
-
-  <footer class="page-footer">
-    <span>corpus.quran.com &middot; quranwbw.com</span>
-    <span>Personal study &middot; Not for redistribution</span>
-  </footer>
-
 </div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showComingSoon&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;}, &quot;comingSoonList&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Al-Fātiḥa · Yūsuf · Al-Mulk · ...&quot;, &quot;tsType&quot;: &quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const steps = [
+      { label: 'Verse Grammar', bodyHtml: { __html: 'Read a passage verse by verse. Each word is parsed by <strong>root, grammatical form, and case</strong>. Tap a root chip to jump directly to its Root Explorer entry.' } },
+      { label: 'Root Explorer', bodyHtml: { __html: 'Study a root in depth &mdash; all <strong>ten verb forms</strong> (awz&#257;n), derived nouns, participles, and ma&#7779;dars, with every occurrence in the passage highlighted.' } },
+      { label: 'Cross-reference', bodyHtml: { __html: 'Roots shared between passages &mdash; <strong>&#1585;-&#1581;-&#1605;, &#1587;-&#1604;-&#1605;, &#1593;-&#1576;-&#1583;</strong> &mdash; link across surahs. Learn a root once; recognize it everywhere.' } },
+    ];
+    return {
+      showComingSoon: this.props.showComingSoon ?? true,
+      comingSoonList: this.props.comingSoonList ?? 'Al-Fātiḥa · Yūsuf · Al-Mulk · ...',
+      steps,
+    };
+  }
+}
+
+</script>
 </body>
 </html>

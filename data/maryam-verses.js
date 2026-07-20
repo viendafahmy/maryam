@@ -2,7 +2,7 @@
 // Add new verses here by copying an existing block (e.g. `16: { ... }`).
 // This file is loaded via <script src="data/verses.js"></script> before app.js runs.
 
-const verses = {
+if (typeof window.verses === 'undefined') { window.verses = {
   1: {
     arabic: 'كهيعص',
     transliteration: 'Kāf Hā Yāʾ ʿAyn Ṣād',
@@ -220,3 +220,5 @@ const verses = {
     highlight: 'Three temporal clauses: يَوْمَ وُلِدَ (passive perfect) — يَوْمَ يَمُوتُ (active imperfect) — يَوْمَ يُبْعَثُ حَيًّا (passive imperfect). The shifts in tense and voice map the entire arc of human existence. This structure recurs almost identically in verse 33 for ʿĪsā.'
   }
 };
+
+}
